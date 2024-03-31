@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kollektif&family=Roboto:wght@400&display=swap">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    .home-menu {
+        text-align: center;
+        margin-top: 20%;
+    }
+    .home-title {
+        font-family: 'Kollektif', sans-serif;
+        font-size: 56.9px;
+        color: black;
+        margin-bottom: 10px;
+    }
+    .home-subtext {
+        color: #666;
+    }
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+        color: #333;
+    }
+    #todo-input-container {
+        text-align: center;
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+    #todoInput {
+        width: 70%;
+        padding: 10px;
+        border: none;
+        border-radius: 17px;
+        outline: none;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16.8px;
+        letter-spacing: 0.075em; /* Changed letter spacing */
+        background-color: white; /* Changed background color */
+        transition: background-color 0.3s ease;
+    }
+    #todoInput:hover {
+        background-color: #f0f0f0; /* Hover background color */
+    }
+    #todoInput:focus {
+        background-color: #e0e0e0; /* Focused background color */
+    }
+    #todo-list {
+        margin: 0 auto;
+        padding: 0;
+        max-width: 400px;
+    }
+    #todo-list li {
+        list-style-type: none;
+        margin-bottom: 5px;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 17px;
+        border: 3.5px solid black;
+        transition: all 0.3s ease;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16.8px;
+        letter-spacing: 0.075em; /* Changed letter spacing */
+        position: relative; /* Ensure proper positioning of context menu */
+    }
+    #todo-list li.completed {
+        text-decoration: line-through;
+        background-color: #ffe0e0; /* Light pink fade when marked as done */
+    }
+    .status-box {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 5px 10px;
+        background-color: #f0f0f0;
+        border-radius: 17px;
+        font-size: 14px;
+    }
+    .context-menu {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+    .context-menu ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    .context-menu ul li {
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+    .context-menu ul li:hover {
+        background-color: #f0f0f0;
+    }
+</style>
+</head>
+<body>
+    <div id="homeMenu" class="home-menu">
+        <h1 class="home-title">Checkmate!</h1>
+        <p class="home-subtext">[ a minimalistic task manager ]</p>
+    </div>
+
+    <h2 id="todoTitle" style="display: none;">To-Do List</h2>
+    <div id="todo-input-container" style="display: none;">
+        <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn" onkeydown="if (event.keyCode === 13) addTodo()">
+    </div>
+    <ul id="todo-list" style="display: none;">
+    </ul>
+
+    <div id="contextMenu" class="context-menu">
+        <ul>
+            <li id="markDone">Mark as Done</li>
+            <li id="markInProgress">Mark as In Progress</li>
+            <li id="markNotStarted">Mark as Not Started</li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("keydown", function(event) {
+            if (event.code === 'Enter' || event.code === 'Space') {
+                var homeMenu = document.getElementById("homeMenu");
+                var todoTitle = document.getElementById("todoTitle");
+                var todoInputContainer = document.getElementById("todo-input-container");
+                var todoList = document.getElementById("todo-list");
+
+                homeMenu.classList.add("fade-out");
+                setTimeout(function() {
+                    homeMenu.style.display = "none";
+                    todoTitle.style.display = "block";
+                    todoInputContainer.style.display = "block";
+                    todoList.style.display = "block";
+                    todoTitle.classList.add("fadeIn");
+                    todoInputContainer.classList.add("fadeIn");
+                    todoList.classList.add("fadeIn");
+                }, 500);
+            }
+        });
+
+        function addTodo() {
+            var inputField = document.getElementById("todoInput");
+            var inputValue = inputField.value;
+            if (inputValue.trim() !== "") {
+                var listItem = document.createElement("li");
+                var statusBox = document.createElement("div");
+                statusBox.innerText = "Not Started";
+                statusBox.classList.add("status-box");
+                listItem.appendChild(statusBox);
+                listItem.innerText = inputValue;
+                listItem.onclick = function() {
+                    this.classList.toggle("completed");
+                };
+                listItem.oncontextmenu = function(event) {
+                    event.preventDefault(); // Prevent default context menu
+                    var contextMenu = document.getElementById("contextMenu");
+                    contextMenu.style.left = event.pageX + "px";
+                    contextMenu.style.top = event.pageY + "px";
+                    contextMenu.style.display = "block";
+                    // Store the clicked element for further reference
+                    window.clickedTodo = this;
+                };
+                listItem.classList.add("fadeIn");
+                document.getElementById("todo-list").appendChild(listItem);
+                inputField.value = "";
+            } else {
+                alert("Please enter a task!");
+            }
+        }
+
+        document.addEventListener("click", function(event) {
+            var contextMenu = document.getElementById("contextMenu");
+            if (contextMenu.style.display === "block") {
+                contextMenu.style.display = "none";
+            }
+        });
+
+        document.getElementById("markDone").addEventListener("click", function() {
+            if (window.clickedTodo) {
+                window.clickedTodo.classList.add("completed");
+                window.clickedTodo.querySelector(".status-box").innerText = "Done";
+            }
+        });
+
+        document.getElementById("markInProgress").addEventListener("click", function() {
+            if (window.clickedTodo) {
+                window.clickedTodo.classList.remove("completed");
+                window.clickedTodo.querySelector(".status-box").innerText = "In Progress";
+            }
+        });
+
+        document.getElementById("markNotStarted").addEventListener("click", function() {
+            if (window.clickedTodo) {
+                window.clickedTodo.classList.remove("completed");
+                window.clickedTodo.querySelector(".status-box").innerText = "Not Started";
+            }
+        });
+    </script>
+</body>
+</html>
