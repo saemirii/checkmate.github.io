@@ -1,0 +1,231 @@
+body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.home-menu {
+    text-align: center;
+    margin-top: 20%;
+}
+
+@font-face {
+    font-family: "Kollektif";
+    src: url(Kollektif.ttf);
+}
+
+@font-face {
+    font-family: "Kollektif-Italic";
+    src: url(Kollektif-Italic.ttf)
+}
+
+.home-title {
+    font-size: 75px;
+    text-align: center;
+    color: black;
+    font-family: "Kollektif-Italic", sans-serif;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5; /* Start with opacity 0 to create fade-in effect */
+    transition: opacity 1s ease; /* Smooth transition for opacity */
+}
+
+
+.home-title:hover {
+    opacity: 1; /* Fade in the text when hovering */
+    text-decoration: line-through; /* Add strike-through effect when hovering */
+}
+
+
+.home-title.fade-in {
+    opacity: 1; /* Set opacity to 1 to fade in */
+}
+
+/* Animation for strike-through */
+.home-title.strike-through {
+    text-decoration: line-through;
+    animation: strikeThrough 2s forwards; /* Animation to add strike-through effect */
+}
+
+@keyframes strikeThrough {
+    0% { text-decoration-color: transparent; }
+    100% { text-decoration-color: black; }
+}
+
+.home-subtext {
+    color: #666;
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    letter-spacing: 0.075em;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    transform: translate(-50%, -50%);
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#todoTitle {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 45px;
+    color: #000000;
+    font-family: "Kollektif", sans-serif;
+}
+
+#todo-input-container {
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#todoInput {
+    width: 350px; /* Adjust the width to match the width of the todo tasks */
+    padding: 10px 20px; /* Adjust padding to match the padding of the todo tasks */
+    border: none;
+    border-radius: 17px;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16.8px;
+    letter-spacing: 0.075em;
+    background-color: white;
+    transition: background-color 0.3s ease;
+}
+
+#todoInput:hover {
+    background-color: #f0f0f0;
+}
+
+#todoInput:focus {
+    background-color: #e0e0e0;
+}
+
+#todo-list {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 400px;
+}
+
+#todo-list li {
+    list-style-type: none;
+    margin-bottom: 5px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 17px;
+    border: 3.5px solid black;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16.8px;
+    letter-spacing: 0.075em;
+    position: relative;
+}
+
+#todo-list li.completed {
+    text-decoration: line-through;
+    background-color: #dae6c0;
+}
+
+.status-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #f0f0f0; /* Default background color (light gray) */
+    border-radius: 17px;
+    font-size: 14px;
+    color: #333; /* Default text color (dark gray) */
+}
+
+/* Not Started */
+.not-started .status-box {
+    background-color: #BEE4A8; /* Light Green */
+    color: white; /* Text color */
+}
+
+/* In Progress */
+.in-progress .status-box {
+    background-color: #FFD789; /* Light Yellow */
+    color: #333; /* Text color */
+}
+
+/* Completed */
+.completed .status-box {
+    background-color: #FF9494; /* Light Red */
+    color: white; /* Text color */
+}
+
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.context-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.context-menu ul li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.context-menu ul li:hover {
+    background-color: #dae6c2;
+}
+
+.div {
+    @font-face {
+        font-family: 'Roboto', sans-serif;
+    }
+}
+
+button#checkInButton {
+    position: absolute;
+    bottom: 32%; /* Adjust the percentage value to move the button further down */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16.8px;
+    letter-spacing: 0.075em;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10%;
+    cursor: pointer;
+    z-index: 1; /* Ensure the button stays above other elements */
+}
+
+.trash-icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* New styles for emoji buttons */
+.emoji-button {
+    font-size: 16.8px;
+    margin-right: 10px;
+    margin-left: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: "Kollektif", sans-serif;
+    display: block; /* Ensure each emoji is on a new row */
+    margin-bottom: 13px; /* Add margin between each emoji */
+    text-decoration: none;
+}
