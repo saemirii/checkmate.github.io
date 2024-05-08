@@ -25,15 +25,26 @@
         }
 
         .home-title {
-            font-size: 56.9px;
+            font-size: 75px;
+            text-align: center;
             color: black;
-            margin-bottom: 10px;
             font-family: "Kollektif", sans-serif;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .home-subtext {
             color: #666;
+            position: absolute;
+            top: 53%;
+            left: 50%;
+            letter-spacing: 0.075em;
+            text-align: center;
+            font-size: 20px;
             font-family: 'Roboto', sans-serif;
+            transform: translate(-50%, -50%);
         }
 
         .fade-out {
@@ -208,7 +219,7 @@
 
         button#checkInButton {
             position: absolute;
-            bottom: 37%; /* Adjust the percentage value to move the button further down */
+            bottom: 32%; /* Adjust the percentage value to move the button further down */
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Roboto', sans-serif;
@@ -232,10 +243,26 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
+
+        /* New styles for emoji buttons */
+        .emoji-button {
+            font-size: 16.8px;
+            margin-right: 10px;
+            margin-left: 15px;
+            margin-top: 20px;
+            cursor: pointer;
+            display: block; /* Ensure each emoji is on a new row */
+            margin-bottom: 13px; /* Add margin between each emoji */
+        }
     </style>
 </head>
 
 <body>
+    <!-- Emoji buttons -->
+    <div class="emoji-button">💾 save progress</div>
+    <div class="emoji-button">⭐ star this repo!</div>
+    <div class="emoji-button">🔐 check-out</div>
+
     <div id="homeMenu" class="home-menu">
         <h1 class="home-title">checkmate!</h1>
         <p class="home-subtext">
@@ -432,5 +459,4 @@
         });
     </script>
 </body>
-
 </html>
