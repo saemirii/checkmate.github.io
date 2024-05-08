@@ -1,124 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>To-Do List</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kollektif&family=Roboto:wght@400&display=swap">
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-    }
-    .home-menu {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Kollektif&family=Roboto:wght@400&display=swap">
+    <style>
+        body {
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .home-menu {
+            text-align: center;
+            margin-top: 20%;
+        }
+
+        @font-face {
+            font-family: "Kollektif";
+            src: url(Kollektif.ttf);
+        }
+
+        .home-title {
+            font-size: 56.9px;
+            color: black;
+            margin-bottom: 10px;
+            font-family: "Kollektif", sans-serif;
+        }
+
+        .home-subtext {
+            color: #666;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #todoTitle {
+            text-align: center;
+            margin-top: 20px;
+            color: #000000;
+            font-family: "Kollektif", sans-serif;
+        }
+
+        #todo-input-container {
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        #todoInput {
+            width: 350px; /* Adjust the width to match the width of the todo tasks */
+            padding: 10px 20px; /* Adjust padding to match the padding of the todo tasks */
+            border: none;
+            border-radius: 17px;
+            outline: none;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16.8px;
+            letter-spacing: 0.075em;
+            background-color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        #todoInput:hover {
+            background-color: #f0f0f0;
+        }
+
+        #todoInput:focus {
+            background-color: #e0e0e0;
+        }
+
+        #todo-list {
+            margin: 0 auto;
+            padding: 0;
+            max-width: 400px;
+        }
+
+        #todo-list li {
+            list-style-type: none;
+            margin-bottom: 5px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 17px;
+            border: 3.5px solid black;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16.8px;
+            letter-spacing: 0.075em;
+            position: relative;
+        }
+
+        #todo-list li.completed {
+            text-decoration: line-through;
+            background-color: #dae6c0;
+        }
+        .status-box {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #f0f0f0; /* Default background color (light gray) */
+            border-radius: 17px;
+            font-size: 14px;
+            color: #333; /* Default text color (dark gray) */
+        }
+
+    /* Not Started */
+        .not-started .status-box {
+            background-color: #BEE4A8; /* Light Green */
+            color: white; /* Text color */
+        }
+
+        /* In Progress */
+        .in-progress .status-box {
+            background-color: #FFD789; /* Light Yellow */
+            color: #333; /* Text color */
+        }
+
+        /* Completed */
+        .completed .status-box {
+            background-color: #FF9494; /* Light Red */
+            color: white; /* Text color */
+        }
+
+        .context-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .context-menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .context-menu ul li {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .context-menu ul li:hover {
+            background-color: #dae6c2;
+        }
+
+        .div {
+            @font-face {
+                font-family: 'Roboto', sans-serif;
+            }
+        }
+        body {
+            font-family: 'Kollektif', sans-serif; /* Apply Kollektif font to the entire page */
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        #loginContainer {
         text-align: center;
-        margin-top: 20%;
-    }
-    .home-title {
-        font-family: 'Kollektif', sans-serif;
-        font-size: 56.9px;
-        color: black;
-        margin-bottom: 10px;
-    }
-    .home-subtext {
-        color: #666;
-    }
-    .fade-out {
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
-    h2 {
-        text-align: center;
-        margin-top: 20px;
-        color: #333;
-    }
-    #todo-input-container {
-        text-align: center;
-        margin-bottom: 10px;
-        padding: 5px;
-    }
-    #todoInput {
-        width: 70%;
-        padding: 10px;
-        border: none;
-        border-radius: 17px;
-        outline: none;
-        font-family: 'Roboto', sans-serif;
-        font-size: 16.8px;
-        letter-spacing: 0.075em; /* Changed letter spacing */
-        background-color: white; /* Changed background color */
-        transition: background-color 0.3s ease;
-    }
-    #todoInput:hover {
-        background-color: #f0f0f0; /* Hover background color */
-    }
-    #todoInput:focus {
-        background-color: #e0e0e0; /* Focused background color */
-    }
-    #todo-list {
-        margin: 0 auto;
-        padding: 0;
-        max-width: 400px;
-    }
-    #todo-list li {
-        list-style-type: none;
-        margin-bottom: 5px;
-        background-color: #fff;
-        padding: 10px;
-        border-radius: 17px;
-        border: 3.5px solid black;
-        transition: all 0.3s ease;
-        font-family: 'Roboto', sans-serif;
-        font-size: 16.8px;
-        letter-spacing: 0.075em; /* Changed letter spacing */
-        position: relative; /* Ensure proper positioning of context menu */
-    }
-    #todo-list li.completed {
-        text-decoration: line-through;
-        background-color: #ffe0e0; /* Light pink fade when marked as done */
-    }
-    .status-box {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 5px 10px;
-        background-color: #f0f0f0;
-        border-radius: 17px;
-        font-size: 14px;
-    }
-    .context-menu {
-        display: none;
-        position: absolute;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        z-index: 1000;
-    }
-    .context-menu ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-    .context-menu ul li {
-        padding: 8px 12px;
-        cursor: pointer;
-    }
-    .context-menu ul li:hover {
-        background-color: #f0f0f0;
-    }
-</style>
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+            }
+
+        #loginForm {
+            font-family: 'Roboto', sans-serif; /* Apply Roboto font to the login form */
+            margin-top: 20px;
+        }
+
+        #loginForm label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #loginForm input[type="text"],
+        #loginForm input[type="password"] {
+            width: 200px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        #loginForm input[type="submit"] {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #loginForm input[type="submit"]:hover {
+            background-color: #333;
+        }
+
+        button#checkInButton {
+            position: absolute;
+            bottom: 37%; /* Adjust the percentage value to move the button further down */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Roboto', sans-serif;
+            font-size: 16.8px;
+            letter-spacing: 0.075em;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10%;
+            cursor: pointer;
+            z-index: 1; /* Ensure the button stays above other elements */
+        }
+
+        .trash-icon {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+    </style>
 </head>
+
 <body>
     <div id="homeMenu" class="home-menu">
-        <h1 class="home-title">Checkmate!</h1>
-        <p class="home-subtext">[ a minimalistic task manager ]</p>
+        <h1 class="home-title">checkmate!</h1>
+        <p class="home-subtext">
+            [ a minimalistic task manager ]
+        </p>
     </div>
+
+    <button id="checkInButton" onclick="showLogin()">check-in</button>
 
     <h2 id="todoTitle" style="display: none;">To-Do List</h2>
     <div id="todo-input-container" style="display: none;">
-        <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn" onkeydown="if (event.keyCode === 13) addTodo()">
+        <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn"
+            onkeydown="if (event.keyCode === 13) addTodo()">
     </div>
     <ul id="todo-list" style="display: none;">
     </ul>
@@ -131,16 +261,69 @@
         </ul>
     </div>
 
+    <div id="loginContainer" style="display: none;">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br><br>
+            <label>
+                <input type="checkbox" id="agreeTos" required>
+                I agree to Checkmate!'s Terms of Service
+            </label>
+            <br><br>
+            <input type="submit" value="Sign In">
+        </form>
+    </div>
+
     <script>
-        document.addEventListener("keydown", function(event) {
+        function showLogin() {
+            var homeMenu = document.getElementById("homeMenu");
+            var loginContainer = document.getElementById("loginContainer");
+            var checkInButton = document.getElementById("checkInButton");
+
+            homeMenu.classList.add("fade-out");
+            checkInButton.style.display = "none";
+            setTimeout(function () {
+                homeMenu.style.display = "none";
+                loginContainer.style.display = "block";
+                loginContainer.classList.add("fadeIn");
+            }, 500);
+        }
+
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var agreeTos = document.getElementById("agreeTos").checked;
+
+            // Validate username, password, and TOS agreement
+            if (username.trim() === "" || password.trim() === "" || !agreeTos) {
+                alert("Please fill in all fields and agree to the Terms of Service.");
+                return;
+            }
+
+            // Simulate authentication (replace with actual authentication logic)
+            // For demonstration purposes, assume successful login and redirect to main page
+            alert("Login successful. Redirecting to main page...");
+            window.location.href = "index.html"; // Redirect to main page after successful login
+        });
+
+        document.addEventListener("keydown", function (event) {
             if (event.code === 'Enter' || event.code === 'Space') {
                 var homeMenu = document.getElementById("homeMenu");
                 var todoTitle = document.getElementById("todoTitle");
                 var todoInputContainer = document.getElementById("todo-input-container");
                 var todoList = document.getElementById("todo-list");
+                var checkInButton = document.getElementById("checkInButton");
 
                 homeMenu.classList.add("fade-out");
-                setTimeout(function() {
+                checkInButton.style.display = "none";
+                setTimeout(function () {
                     homeMenu.style.display = "none";
                     todoTitle.style.display = "block";
                     todoInputContainer.style.display = "block";
@@ -157,58 +340,97 @@
             var inputValue = inputField.value;
             if (inputValue.trim() !== "") {
                 var listItem = document.createElement("li");
+
+                // Trash icon
+                var trashIcon = document.createElement("span");
+                trashIcon.innerHTML = "&#128465;"; // Unicode for trash can emoji
+                trashIcon.classList.add("trash-icon");
+                trashIcon.onclick = function (event) {
+                    listItem.classList.add("fade-out");
+                    setTimeout(function () {
+                        listItem.remove();
+                    }, 500);
+                    event.stopPropagation(); // Prevent the task from being toggled when clicking the trash icon
+                };
+                listItem.appendChild(trashIcon);
+
+                // Task text
+                var taskText = document.createElement("span");
+                taskText.textContent = inputValue;
+                listItem.appendChild(taskText);
+
+                // Status box and circle (unchanged)
                 var statusBox = document.createElement("div");
                 statusBox.innerText = "Not Started";
                 statusBox.classList.add("status-box");
                 listItem.appendChild(statusBox);
-                listItem.innerText = inputValue;
-                listItem.onclick = function() {
+
+                var statusCircle = document.createElement("div");
+                statusCircle.classList.add("status-circle", "not-started");
+                listItem.appendChild(statusCircle);
+
+                // Click event (unchanged)
+                listItem.onclick = function () {
                     this.classList.toggle("completed");
                 };
-                listItem.oncontextmenu = function(event) {
-                    event.preventDefault(); // Prevent default context menu
+
+                // Context menu event (unchanged)
+                listItem.oncontextmenu = function (event) {
+                    event.preventDefault();
                     var contextMenu = document.getElementById("contextMenu");
                     contextMenu.style.left = event.pageX + "px";
                     contextMenu.style.top = event.pageY + "px";
                     contextMenu.style.display = "block";
-                    // Store the clicked element for further reference
                     window.clickedTodo = this;
                 };
+
+                // Add fade-in animation
                 listItem.classList.add("fadeIn");
+
+                // Append the list item to the todo list
                 document.getElementById("todo-list").appendChild(listItem);
+
+                // Clear input field
                 inputField.value = "";
             } else {
                 alert("Please enter a task!");
             }
         }
 
-        document.addEventListener("click", function(event) {
+        document.addEventListener("click", function (event) {
             var contextMenu = document.getElementById("contextMenu");
             if (contextMenu.style.display === "block") {
                 contextMenu.style.display = "none";
             }
         });
 
-        document.getElementById("markDone").addEventListener("click", function() {
+        document.getElementById("markDone").addEventListener("click", function () {
             if (window.clickedTodo) {
                 window.clickedTodo.classList.add("completed");
-                window.clickedTodo.querySelector(".status-box").innerText = "Done";
+                window.clickedTodo.querySelector(".status-box").innerText = "done";
+                window.clickedTodo.querySelector(".status-box").style.backgroundColor = "#BEE4A8"; // Change to green
+                window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
             }
         });
 
-        document.getElementById("markInProgress").addEventListener("click", function() {
+        document.getElementById("markInProgress").addEventListener("click", function () {
             if (window.clickedTodo) {
-                window.clickedTodo.classList.remove("completed");
+                window.clickedTodo.classList.remove("completed", "not-started");
                 window.clickedTodo.querySelector(".status-box").innerText = "In Progress";
+                window.clickedTodo.querySelector(".status-box").style.backgroundColor = "#FFD789"; // Change to light yellow
+                window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
             }
         });
 
-        document.getElementById("markNotStarted").addEventListener("click", function() {
+        document.getElementById("markNotStarted").addEventListener("click", function () {
             if (window.clickedTodo) {
-                window.clickedTodo.classList.remove("completed");
+                window.clickedTodo.classList.remove("completed", "in-progress");
                 window.clickedTodo.querySelector(".status-box").innerText = "Not Started";
+                window.clickedTodo.querySelector(".status-box").style.backgroundColor = "#FF9494"; // Change to light gray
+                window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
             }
         });
     </script>
 </body>
+
 </html>
