@@ -183,3 +183,19 @@ function validateUser(username, password) {
     }
     return false; // No match found
 }
+
+document.addEventListener("keydown", function (event) {
+    if (event.code === 'KeyS') {
+        showCalendarPicker();
+    }
+});
+
+document.addEventListener("contextmenu", function (event) {
+    event.preventDefault(); // Prevent default context menu
+    showCalendarPicker();
+});
+
+function showCalendarPicker() {
+    // Your logic to show the calendar picker goes here
+    alert("Calendar picker will be displayed here.");
+}
