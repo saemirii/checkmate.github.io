@@ -1,201 +1,68 @@
-function showLogin() {
-    var homeMenu = document.getElementById("homeMenu");
-    var loginContainer = document.getElementById("loginContainer");
-    var checkInButton = document.getElementById("checkInButton");
 
-    homeMenu.classList.add("fade-out");
-    checkInButton.style.display = "none";
-    setTimeout(function () {
-        homeMenu.style.display = "none";
-        loginContainer.style.display = "block";
-        loginContainer.classList.add("fadeIn");
-    }, 500);
-}
+<!DOCTYPE html>
+<html lang="en">
 
-document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkmate!</title>
+    <link rel = "icon" type = "image/x-icon" href = "favicon.png"> </link>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    var agreeTos = document.getElementById("agreeTos").checked;
+<body>
+    <!-- Emoji buttons test-->
+        <div class="emoji-button">💾 save progress</div>
+    <a href="https://github.com/saemirii/checkmate">
+        <div class="emoji-button">⭐ star this repo!</div>
+    </a>
+        <div class="emoji-button">🔐 check-out</div>
 
-    // Validate username, password, and TOS agreement
-    if (username.trim() === "" || password.trim() === "" || !agreeTos) {
-        alert("Please fill in all fields and agree to the Terms of Service.");
-        return;
-    }
+    <div id="homeMenu" class="home-menu">
+        <h1 class="home-title">checkmate!</h1>
+        <p class="home-subtext">
+            [ a minimalistic task manager ]
+        </p>
+    </div>
+    
+    <button id="checkInButton" onclick="showLogin()">check-in</button>
 
-    // Simulate authentication (replace with actual authentication logic)
-    // For demonstration purposes, assume successful login and redirect to main page
-    alert("Login successful. Redirecting to main page...");
-    window.location.href = "index.html"; // Redirect to main page after successful login
-});
+    <h2 id="todoTitle" style="display: none;">To-Do List</h2>
+    <div id="todo-input-container" style="display: none;">
+        <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn"
+            onkeydown="if (event.keyCode === 13) addTodo()">
+    </div>
+    <ul id="todo-list" style="display: none;">
+    </ul>
 
-document.addEventListener("keydown", function (event) {
-    if (event.code === 'Enter' || event.code === 'Space') {
-        var homeMenu = document.getElementById("homeMenu");
-        var todoTitle = document.getElementById("todoTitle");
-        var todoInputContainer = document.getElementById("todo-input-container");
-        var todoList = document.getElementById("todo-list");
-        var checkInButton = document.getElementById("checkInButton");
+    <div id="contextMenu" class="context-menu">
+        <ul>
+            <li id="markDone">Mark as Done</li>
+            <li id="markInProgress">Mark as In Progress</li>
+            <li id="markNotStarted">Mark as Not Started</li>
+        </ul>
+    </div>
 
-        homeMenu.classList.add("fade-out");
-        checkInButton.style.display = "none";
-        setTimeout(function () {
-            homeMenu.style.display = "none";
-            todoTitle.style.display = "block";
-            todoInputContainer.style.display = "block";
-            todoList.style.display = "block";
-            todoTitle.classList.add("fadeIn");
-            todoInputContainer.classList.add("fadeIn");
-            todoList.classList.add("fadeIn");
-        }, 500);
-    }
-});
+    <div id="loginContainer" style="display: none;">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br><br>
+            <label>
+                <input type="checkbox" id="agreeTos" required>
+                I agree to Checkmate!'s Terms of Service
+            </label>
+            <br><br>
+            <input type="submit" value="Sign In">
+        </form>
+    </div>
 
-function addTodo() {
-    var inputField = document.getElementById("todoInput");
-    var inputValue = inputField.value;
-    if (inputValue.trim() !== "") {
-        var listItem = document.createElement("li");
 
-        // Trash icon
-        var trashIcon = document.createElement("span");
-        trashIcon.innerHTML = "&#128465;"; // Unicode for trash can emoji
-        trashIcon.classList.add("trash-icon");
-        trashIcon.onclick = function (event) {
-            listItem.classList.add("fade-out");
-            setTimeout(function () {
-                listItem.remove();
-            }, 500);
-            event.stopPropagation(); // Prevent the task from being toggled when clicking the trash icon
-        };
-        listItem.appendChild(trashIcon);
+    <script src="script.js"></script>
+</body>
 
-        // Task text
-        var taskText = document.createElement("span");
-        taskText.textContent = inputValue;
-        listItem.appendChild(taskText);
-
-        // Status box and circle (unchanged)
-        var statusBox = document.createElement("div");
-        statusBox.innerText = "Not Started";
-        statusBox.classList.add("status-box");
-        listItem.appendChild(statusBox);
-
-        var statusCircle = document.createElement("div");
-        statusCircle.classList.add("status-circle", "not-started");
-        listItem.appendChild(statusCircle);
-
-        // Click event (unchanged)
-        listItem.onclick = function () {
-            this.classList.toggle("completed");
-        };
-
-        // Context menu event (unchanged)
-        listItem.oncontextmenu = function (event) {
-            event.preventDefault();
-            var contextMenu = document.getElementById("contextMenu");
-            contextMenu.style.left = event.pageX + "px";
-            contextMenu.style.top = event.pageY + "px";
-            contextMenu.style.display = "block";
-            window.clickedTodo = this;
-        };
-
-        // Add fade-in animation
-        listItem.classList.add("fadeIn");
-
-        // Append the list item to the todo list
-        document.getElementById("todo-list").appendChild(listItem);
-
-        // Clear input field
-        inputField.value = "";
-    } else {
-        alert("Please enter a task!");
-    }
-}
-
-document.addEventListener("click", function (event) {
-    var contextMenu = document.getElementById("contextMenu");
-    if (contextMenu.style.display === "block") {
-        contextMenu.style.display = "none";
-    }
-});
-
-document.getElementById("markDone").addEventListener("click", function () {
-    if (window.clickedTodo) {
-        window.clickedTodo.classList.add("completed");
-        window.clickedTodo.querySelector(".status-box").innerText = "done";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "#BEE4A8"; // Change to green
-        window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
-    }
-});
-
-document.getElementById("markInProgress").addEventListener("click", function () {
-    if (window.clickedTodo) {
-        window.clickedTodo.classList.remove("completed", "not-started");
-        window.clickedTodo.querySelector(".status-box").innerText = "In Progress";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "#FFD789"; // Change to light yellow
-        window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
-    }
-});
-
-document.getElementById("markNotStarted").addEventListener("click", function () {
-    if (window.clickedTodo) {
-        window.clickedTodo.classList.remove("completed", "in-progress");
-        window.clickedTodo.querySelector(".status-box").innerText = "Not Started";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "#FF9494"; // Change to light gray
-        window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
-    }
-});
-
-document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
-
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    var agreeTos = document.getElementById("agreeTos").checked;
-
-    // Simulate validation against database entries (replace with actual database logic)
-    if (validateUser(username, password)) {
-        // Successful login
-        alert("Login successful. Redirecting to main page...");
-        window.location.href = "index.html"; // Redirect to main page after successful login
-    } else {
-        // Invalid credentials
-        alert("Invalid username or password.");
-    }
-});
-
-function validateUser(username, password) {
-    // Simulated database entries
-    var users = [
-        { username: "user1", password: "password1" },
-        { username: "user2", password: "password2" },
-        // Add more user entries as needed
-    ];
-
-    // Check if the username and password match any entry in the database
-    for (var i = 0; i < users.length; i++) {
-        if (users[i].username === username && users[i].password === password) {
-            return true; // Match found
-        }
-    }
-    return false; // No match found
-}
-
-document.addEventListener("keydown", function (event) {
-    if (event.code === 'KeyS') {
-        showCalendarPicker();
-    }
-});
-
-document.addEventListener("contextmenu", function (event) {
-    event.preventDefault(); // Prevent default context menu
-    showCalendarPicker();
-});
-
-function showCalendarPicker() {
-    // Your logic to show the calendar picker goes here
-    alert("Calendar picker will be displayed here.");
-}
+</html>
