@@ -10,14 +10,16 @@ Checkmate! is a simple to-do list tool to manage your tasks-- all in one website
 ## Reminder system to ensure punctuality
 ![image](https://github.com/saemirii/checkmate/assets/88029789/580ff60a-52d0-4f90-b55a-defea27c1e19)
 
-## Quick login 
+## Quick Login 
 ![image](https://github.com/saemirii/checkmate/assets/88029789/ad3022cb-86ce-4044-a563-9fac15488b4c)
 
 ## Contribute!
-This passion project of mine is currently a work in progress! Started on March 31, 2024, I aim for this website to be released to the public in beta mode by the end of April. To contribute or suggest comments, kindly send me a friend request on Discord (username: safiinuh). Thank you!
+This passion project of mine is currently a work in progress! Started on March 31, 2024, I aim for this website to be released to the public in beta mode by the end of May. To contribute or suggest comments, kindly send me a friend request on Discord (username: safiinuh). Thank you!
 
-## to-do list
-1. format main html file into css, html, js file handlers
-2. fix UI and add Kollektif font
-3. find development team (dm me to apply)
-4. implement mongoDB system to save profiles
+`git clone saemirii/checkmate.github.io`
+`git commit <files> && git push`
+
+## To-do list
+1. Implement MongoDB system database for login saves.
+2. Request for beta testers.
+3. Insert date picker and scheduling. 
