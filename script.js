@@ -185,11 +185,26 @@ function validateUser(username, password) {
 }
 
 document.addEventListener("contextmenu", function (event) {
-    event.preventDefault(); // Prevent default context menu
-    showCalendarPicker();
+    // event.preventDefault(); // Prevent default context menu
+
+    // This should only trigger when user right-clicks above one of the to-do's
+    // console.log(event.target);
+
+    if (event.target.tagName === "LI" && event.target.className === "fadeIn") {
+        event.preventDefault();
+        showCalendarPicker()
+    }
 });
 
 function showCalendarPicker() {
     // Your logic to show the calendar picker goes here
-    alert("Calendar picker will be displayed here.");
+    // alert("Calendar picker will be displayed here.")
+    const datePicker = document.getElementById("datepicker");
+    datePicker.style.display = "block";
+
+    // change datePicker position to be next to cursor?
+    // datePicker.style.left = event.pageX + "px";
+    // datePicker.style.top = event.pageY + "px";
+
+    console.log('triggered calendar picker')
 }
