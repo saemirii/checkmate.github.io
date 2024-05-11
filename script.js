@@ -1,3 +1,4 @@
+
 function showLogin() {
     var homeMenu = document.getElementById("homeMenu");
     var loginContainer = document.getElementById("loginContainer");
@@ -72,6 +73,16 @@ function addTodo() {
         };
         listItem.appendChild(trashIcon);
 
+        var calendarIcon = document.createElement("span");
+        calendarIcon.innerHTML = "&#128197;"; // Unicode for calendar emoji
+        calendarIcon.onclick = function (event) {
+            var datePicker = document.getElementById("datepicker");
+            datePicker.style.display = "block";
+        };
+        calendarIcon.style.marginLeft = "auto"; // Right positioning
+        calendarIcon.style.cursor = "pointer"; // Add cursor pointer
+        listItem.appendChild(calendarIcon);
+        
         // Task text
         var taskText = document.createElement("span");
         taskText.textContent = inputValue;
@@ -184,6 +195,11 @@ function validateUser(username, password) {
     return false; // No match found
 }
 
+if (event.target.tagName === "LI" && event.target.className === "fadeIn") {
+    event.preventDefault();
+    showCalendarPicker(event) // <---- pass the event to the function here
+}
+
 document.addEventListener("contextmenu", function (event) {
     // event.preventDefault(); // Prevent default context menu
 
@@ -196,15 +212,15 @@ document.addEventListener("contextmenu", function (event) {
     }
 });
 
-function showCalendarPicker() {
+function showCalendarPicker(event) { // <---- accept the event here!
     // Your logic to show the calendar picker goes here
     // alert("Calendar picker will be displayed here.")
     const datePicker = document.getElementById("datepicker");
     datePicker.style.display = "block";
 
     // change datePicker position to be next to cursor?
-    // datePicker.style.left = event.pageX + "px";
-    // datePicker.style.top = event.pageY + "px";
+    datePicker.style.left = event.pageX + "px";
+    datePicker.style.top = event.pageY + "px";
 
     console.log('triggered calendar picker')
 }
