@@ -76,13 +76,14 @@ function addTodo() {
         var calendarIcon = document.createElement("span");
         calendarIcon.innerHTML = "&#128197;"; // Unicode for calendar emoji
         calendarIcon.onclick = function (event) {
-            var datePicker = document.getElementById("datepicker");
-            datePicker.style.display = "block";
+            // var datePicker = document.getElementById("datepicker");
+            // datePicker.style.display = "block";
+            showCalendarPicker(event)
         };
         calendarIcon.style.marginLeft = "auto"; // Right positioning
         calendarIcon.style.cursor = "pointer"; // Add cursor pointer
         listItem.appendChild(calendarIcon);
-        
+
         // Task text
         var taskText = document.createElement("span");
         taskText.textContent = inputValue;
@@ -195,27 +196,34 @@ function validateUser(username, password) {
     return false; // No match found
 }
 
-document.addEventListener("contextmenu", function (event) {
-    // event.preventDefault(); // Prevent default context menu
-
-    // This should only trigger when user right-clicks above one of the to-do's
-    // console.log(event.target);
-
-    if (event.target.tagName === "LI" && event.target.className === "fadeIn") {
-        event.preventDefault();
-        showCalendarPicker(event)
-    }
-});
+// TURN OFF RIGHT-CLICKING -- You can delete this block of code if you don't need it anymore, up to you!
+// document.addEventListener("contextmenu", function (event) {
+//     event.preventDefault(); // Prevent default context menu
+//
+//     This should only trigger when user right-clicks above one of the to-do's
+//     console.log(event.target);
+//
+//     if (event.target.tagName === "LI" && event.target.className === "fadeIn") {
+//         event.preventDefault();
+//         showCalendarPicker(event)
+//     }
+// });
 
 function showCalendarPicker(event) {
     // Your logic to show the calendar picker goes here
     // alert("Calendar picker will be displayed here.")
     const datePicker = document.getElementById("datepicker");
-    datePicker.style.display = "block";
 
-    // change datePicker position to be next to cursor?
-    datePicker.style.left = event.pageX + "px";
-    datePicker.style.top = event.pageY + "px";
+    if(datePicker.style.display === "block") {
+        datePicker.style.display = "none";
+    } else {
+        datePicker.style.display = "block";
+
+        // change datePicker position to be next to cursor?
+        // add or subtract to make the datepicker show up in different positions
+        datePicker.style.left = event.pageX + 10 + "px";
+        datePicker.style.top = event.pageY - 20 + "px";
+    }
 
     console.log('triggered calendar picker')
 }
