@@ -195,11 +195,6 @@ function validateUser(username, password) {
     return false; // No match found
 }
 
-if (event.target.tagName === "LI" && event.target.className === "fadeIn") {
-    event.preventDefault();
-    showCalendarPicker(event) // <---- pass the event to the function here
-}
-
 document.addEventListener("contextmenu", function (event) {
     // event.preventDefault(); // Prevent default context menu
 
@@ -208,11 +203,11 @@ document.addEventListener("contextmenu", function (event) {
 
     if (event.target.tagName === "LI" && event.target.className === "fadeIn") {
         event.preventDefault();
-        showCalendarPicker()
+        showCalendarPicker(event)
     }
 });
 
-function showCalendarPicker(event) { // <---- accept the event here!
+function showCalendarPicker(event) {
     // Your logic to show the calendar picker goes here
     // alert("Calendar picker will be displayed here.")
     const datePicker = document.getElementById("datepicker");
