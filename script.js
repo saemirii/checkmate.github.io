@@ -212,7 +212,9 @@ function validateUser(username, password) {
 function showCalendarPicker(event) {
     // Your logic to show the calendar picker goes here
     // alert("Calendar picker will be displayed here.")
+    event.stopPropagation();
     const datePicker = document.getElementById("datepicker");
+    datePicker.style.display = "none";
 
     if(datePicker.style.display === "block") {
         datePicker.style.display = "none";
@@ -225,5 +227,9 @@ function showCalendarPicker(event) {
         datePicker.style.top = event.pageY - 20 + "px";
     }
 
-    console.log('triggered calendar picker')
+    // console.log('triggered calendar picker')
+    datePicker.addEventListener('change', () => {
+        console.log(datePicker.value);
+    })
 }
+
