@@ -1,3 +1,5 @@
+var setDueDateButton = document.getElementById('todoDueDate')
+
 
 function showLogin() {
     var homeMenu = document.getElementById("homeMenu");
@@ -45,7 +47,7 @@ document.addEventListener("keydown", function (event) {
         setTimeout(function () {
             homeMenu.style.display = "none";
             todoTitle.style.display = "block";
-            todoInputContainer.style.display = "block";
+            todoInputContainer.style.display = "flex";
             todoList.style.display = "block";
             todoTitle.classList.add("fadeIn");
             todoInputContainer.classList.add("fadeIn");
@@ -54,11 +56,29 @@ document.addEventListener("keydown", function (event) {
     }
 });
 
+// Show the date picker when user clicks on the Set due date button
+setDueDateButton.addEventListener("click", showHideDatePicker)
+
+function showHideDatePicker() {
+    const dateInput = document.getElementById('datePicker');
+    const dateInputParent = dateInput.parentElement;
+    if(dateInputParent.style.display === "none") {
+        dateInputParent.style.display = "block";
+    } else {
+        dateInputParent.style.display = "none";
+    }
+}
+
+
 function addTodo() {
     var inputField = document.getElementById("todoInput");
+    const dateInput = document.getElementById('datePicker');
+
     var inputValue = inputField.value;
     if (inputValue.trim() !== "") {
         var listItem = document.createElement("li");
+        listItem.dataset.dd = dateInput.value;
+        listItem.style.position = "relative";
 
         // Trash icon
         var trashIcon = document.createElement("span");
@@ -74,15 +94,35 @@ function addTodo() {
         listItem.appendChild(trashIcon);
 
         var calendarIcon = document.createElement("span");
+        var dueDateContainer = document.createElement("div");
+        var dueDateText = document.createElement('span')
+
+        dueDateContainer.className = "due-date-container"
+        dueDateContainer.style.display = "none";
+
         calendarIcon.innerHTML = "&#128197;"; // Unicode for calendar emoji
-        calendarIcon.onclick = function (event) {
-            // var datePicker = document.getElementById("datepicker");
-            // datePicker.style.display = "block";
-            showCalendarPicker(event)
-        };
         calendarIcon.style.marginLeft = "auto"; // Right positioning
         calendarIcon.style.cursor = "pointer"; // Add cursor pointer
+        calendarIcon.style.marginRight = "6px";
         listItem.appendChild(calendarIcon);
+        listItem.appendChild(dueDateContainer);
+
+        dueDateContainer.appendChild(dueDateText);
+
+        // Show due date when user clicks on calendar icon
+        calendarIcon.onclick = function (event) {
+            event.stopPropagation();
+            if(listItem.dataset.dd !== "") {
+                dueDateText.innerText = `This task is due on: ${listItem.dataset.dd}`;
+            } else {
+                dueDateText.innerText = "This task has no due date";
+            }
+            if(dueDateContainer.style.display === "none") {
+                dueDateContainer.style.display = "block";
+            } else {
+                dueDateContainer.style.display = "none";
+            }
+        };
 
         // Task text
         var taskText = document.createElement("span");
@@ -120,8 +160,12 @@ function addTodo() {
         // Append the list item to the todo list
         document.getElementById("todo-list").appendChild(listItem);
 
+        // Clear date picker and hide it if its visible
+        showHideDatePicker()
+        dateInput.value = "";
         // Clear input field
         inputField.value = "";
+
     } else {
         alert("Please enter a task!");
     }
@@ -194,43 +238,6 @@ function validateUser(username, password) {
         }
     }
     return false; // No match found
-}
-
-// TURN OFF RIGHT-CLICKING -- You can delete this block of code if you don't need it anymore, up to you!
-// document.addEventListener("contextmenu", function (event) {
-//     event.preventDefault(); // Prevent default context menu
-//
-//     This should only trigger when user right-clicks above one of the to-do's
-//     console.log(event.target);
-//
-//     if (event.target.tagName === "LI" && event.target.className === "fadeIn") {
-//         event.preventDefault();
-//         showCalendarPicker(event)
-//     }
-// });
-
-function showCalendarPicker(event) {
-    // Your logic to show the calendar picker goes here
-    // alert("Calendar picker will be displayed here.")
-    event.stopPropagation();
-    const datePicker = document.getElementById("datepicker");
-    datePicker.style.display = "none";
-
-    if(datePicker.style.display === "block") {
-        datePicker.style.display = "none";
-    } else {
-        datePicker.style.display = "block";
-
-        // change datePicker position to be next to cursor?
-        // add or subtract to make the datepicker show up in different positions
-        datePicker.style.left = event.pageX + 10 + "px";
-        datePicker.style.top = event.pageY - 20 + "px";
-    }
-
-    // console.log('triggered calendar picker')
-    datePicker.addEventListener('change', () => {
-        console.log(datePicker.value);
-    })
 }
 
 document.addEventListener('keydown', function(event) {
