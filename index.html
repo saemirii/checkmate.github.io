@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>checkmate!</title>
-    <link rel = "icon" type = "image/x-icon" href = "icon.png"> </link>
+    <link rel = "icon" type = "image/x-icon" href = "favicon.png"> </link>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -60,6 +60,58 @@
             <br><br>
             <input type="submit" value="Sign In">
         </form>
+    </div>
+
+    <div id="reminder-container" class="hidden">
+        <div class="reminder-header">
+            <span>reminders</span>
+            <input type="checkbox" id="toggle-reminders">
+            <label for="toggle-reminders">May 13, 2024</label>
+        </div>
+        <div class="reminder-settings">
+            <div>symbols:</div>
+            <div>
+                <span class="symbol red"></span> due today
+                <span class="symbol yellow"></span> due soon
+                <span class="symbol green"></span> due later
+            </div>
+            <div>settings:</div>
+            <div>
+                <label><input type="checkbox"> notify you</label>
+                <label><input type="checkbox"> mark as done</label>
+                <label><input type="checkbox"> insert more...</label>
+            </div>
+        </div>
+        <div class="reminder-list">
+            <div class="reminder-item">
+                <span class="symbol red"></span>
+                make butter and toast
+                <button class="trash" onclick="removeReminder(this)">🗑️</button>
+            </div>
+            <div class="reminder-item">
+                <span class="symbol yellow"></span>
+                revise for paper 1 GCSE
+                <button class="trash" onclick="removeReminder(this)">🗑️</button>
+            </div>
+            <div class="reminder-item">
+                <span class="symbol green"></span>
+                cook Gigi Hadid’s pasta
+                <button class="trash" onclick="removeReminder(this)">🗑️</button>
+            </div>
+        </div>
+        <div class="todo-item" data-reminder="Make butter and toast">
+            <span>Make butter and toast</span>
+            <button class="calendar-emoji">📅</button>
+        </div>
+        <div class="todo-item" data-reminder="Revise for paper 1 GCSE">
+            <span>Revise for paper 1 GCSE</span>
+            <button class="calendar-emoji">📅</button>
+        </div>
+        <div class="todo-item" data-reminder="Cook Gigi Hadid’s pasta">
+            <span>Cook Gigi Hadid’s pasta</span>
+            <button class="calendar-emoji">📅</button>
+        </div>
+        
     </div>
 
     <script src="script.js"></script>
