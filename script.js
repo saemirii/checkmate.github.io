@@ -233,3 +233,46 @@ function showCalendarPicker(event) {
     })
 }
 
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Shift') {
+        const reminderContainer = document.getElementById('reminder-container');
+        reminderContainer.classList.toggle('visible');
+    }
+});
+
+function removeReminder(button) {
+    const reminderItem = button.parentElement;
+    reminderItem.remove();
+}
+
+document.querySelectorAll('.calendar-emoji').forEach(button => {
+    button.addEventListener('click', function() {
+        const todoItem = this.parentElement;
+        const reminderText = todoItem.getAttribute('data-reminder');
+        showReminder(reminderText);
+    });
+});
+//test
+document.querySelectorAll('.calendar-emoji').forEach(button => {
+    button.addEventListener('click', function() {
+        const todoItem = this.parentElement;
+        const reminderText = todoItem.getAttribute('data-reminder');
+        showReminder(reminderText);
+    });
+});
+
+function showReminder(reminderText) {
+    const reminderContainer = document.getElementById('reminder-container');
+    const reminderList = document.getElementById('reminder-list');
+    reminderList.innerHTML = ''; // Clear existing reminders
+
+    const reminderItem = `<div class="reminder-item"><span>${reminderText}</span><button class="trash" onclick="removeReminder(this)">🗑️</button></div>`;
+    reminderList.innerHTML = reminderItem;
+
+    reminderContainer.classList.add('visible'); // Show the reminder container
+}
+
+function removeReminder(button) {
+    const reminderItem = button.parentElement;
+    reminderItem.remove();
+}
