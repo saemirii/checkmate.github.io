@@ -277,3 +277,74 @@ body {
 #loginForm input[type="submit"]:hover {
     background-color: #333;
 }
+
+#reminder-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    background: #fff;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    border: 1px solid #ddd; /* Thin border */
+    border-radius: 10px; /* Rounded corners */
+    outline: 2px solid #000; /* Outline */
+}
+
+#reminder-container.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.reminder-header {
+    background: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px; /* Round top corners of the header */
+    border-top-right-radius: 10px;
+}
+
+.reminder-settings {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.symbol {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.red { background: #ff6b6b; }
+.yellow { background: #f1c40f; }
+.green { background: #2ecc71; }
+
+.reminder-list {
+    padding: 10px;
+}
+
+.reminder-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.trash {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    font-size: 16px;
+    margin-left: 10px;
+}
