@@ -80,36 +80,60 @@ body {
 }
 
 #todo-input-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
     padding: 5px;
 }
 
-#todoInput {
-    width: 350px; /* Adjust the width to match the width of the todo tasks */
-    padding: 10px 20px; /* Adjust padding to match the padding of the todo tasks */
-    border: none;
+#todo-input-wrapper {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    width: 450px; /* Adjust the width to match the width of the todo tasks */
+    border: 3px solid black;
     border-radius: 17px;
-    outline: none;
     font-family: 'Roboto', sans-serif;
     font-size: 16.8px;
     letter-spacing: 0.075em;
     background-color: white;
     transition: background-color 0.3s ease;
 }
+#todoInput {
+    border-radius: 17px 0 0 17px;
+    flex: 1;
+    padding: 10px 20px; /* Adjust padding to match the padding of the todo tasks */
+}
 
-#todoInput:hover {
+#todoInput, #todoDueDate {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+#todo-input-wrapper:hover {
     background-color: #f0f0f0;
 }
 
-#todoInput:focus {
+#todo-input-wrapper:has(#todoInput:focus) {
     background-color: #e0e0e0;
+}
+
+#todoDueDate {
+    margin: 6px;
+    border: 3px solid black;
+    cursor: pointer;
+    border-radius: 12px;
+    padding: 10px;
 }
 
 #todo-list {
     margin: 0 auto;
     padding: 0;
-    max-width: 400px;
+    max-width: 450px;
 }
 
 #todo-list li {
@@ -118,7 +142,7 @@ body {
     background-color: #fff;
     padding: 10px;
     border-radius: 17px;
-    border: 3.5px solid black;
+    border: 3px solid black;
     transition: all 0.3s ease;
     font-family: 'Roboto', sans-serif;
     font-size: 16.8px;
@@ -131,6 +155,30 @@ body {
     background-color: #dae6c0;
 }
 
+#datePicker {
+    padding: 0.7rem;
+    font-size: 1rem;
+    border-radius: 15px;
+}
+
+label:has(#datePicker) {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+}
+
+.due-date-container {
+    position: absolute;
+    top: -15px;
+    left: 55px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border: 2px solid black;
+    padding: 0.5rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
 .status-box {
     position: absolute;
     top: 10px;

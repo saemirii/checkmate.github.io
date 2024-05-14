@@ -10,8 +10,6 @@
 </head>
 
 <body>
-<input style="display:none;position:absolute;z-index:1000" type="date" name="datepicker" id="datepicker">
-
     <!-- Emoji buttons -->
         <div class="emoji-button">💾 save progress</div>
     <a href="https://github.com/saemirii/checkmate">
@@ -30,8 +28,16 @@
 
     <h2 id="todoTitle" style="display: none;">To-Do List</h2>
     <div id="todo-input-container" style="display: none;">
-        <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn"
-            onkeydown="if (event.keyCode === 13) addTodo()">
+        <div id="todo-input-wrapper">
+            <label>
+                <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn"
+                       onkeydown="if (event.keyCode === 13) addTodo()">
+            </label>
+            <button id="todoDueDate">Set due date</button>
+            <label style="display: none">
+                <input type="date" id="datePicker">
+            </label>
+        </div>
     </div>
     <ul id="todo-list" style="display: none;">
     </ul>
