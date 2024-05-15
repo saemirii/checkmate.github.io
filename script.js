@@ -283,3 +283,21 @@ function removeReminder(button) {
     const reminderItem = button.parentElement;
     reminderItem.remove();
 }
+
+document.getElementById('darkModeToggle').addEventListener('change', function() {
+    document.body.classList.toggle('dark-mode', this.checked);
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const toggle = document.getElementById('darkModeToggle');
+    const emoji = document.querySelector('.emoji');
+    
+    toggle.addEventListener('change', function() {
+        document.body.classList.toggle('dark-mode', this.checked);
+        if (this.checked) {
+            emoji.textContent = '🌞';
+        } else {
+            emoji.textContent = '🌙';
+        }
+    });
+});
