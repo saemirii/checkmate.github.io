@@ -5,20 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>checkmate!</title>
-    <link rel = "icon" type = "image/x-icon" href = "favicon.png"> </link>
+    <link rel = "icon" type = "image/x-icon" href = "faviconst.png"> </link>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<input style="display:none;position:absolute;z-index:1000" type="date" name="datepicker" id="datepicker">
-
+    <div class="switch-container">
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+            <span class="emoji">🌙</span>
+        </label>
+    </div>
     <!-- Emoji buttons -->
         <div class="emoji-button">💾 save progress</div>
     <a href="https://github.com/saemirii/checkmate">
         <div class="emoji-button">⭐ star this repo!</div>
     </a>
         <div class="emoji-button">🔐 check-out</div>
-
     <div id="homeMenu" class="home-menu">
         <h1 class="home-title">checkmate!</h1>
         <p class="home-subtext">
@@ -30,8 +34,16 @@
 
     <h2 id="todoTitle" style="display: none;">To-Do List</h2>
     <div id="todo-input-container" style="display: none;">
-        <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn"
-            onkeydown="if (event.keyCode === 13) addTodo()">
+        <div id="todo-input-wrapper">
+            <label>
+                <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn"
+                       onkeydown="if (event.keyCode === 13) addTodo()">
+            </label>
+            <button id="todoDueDate">Set due date</button>
+            <label style="display: none">
+                <input type="date" id="datePicker">
+            </label>
+        </div>
     </div>
     <ul id="todo-list" style="display: none;">
     </ul>
@@ -60,6 +72,67 @@
             <br><br>
             <input type="submit" value="Sign In">
         </form>
+    </div>
+
+    <div id="reminder-container" class="hidden">
+        <div class="reminder-header">
+            <span>reminders</span>
+            <input type="checkbox" id="toggle-reminders">
+            <label for="toggle-reminders">May 13, 2024</label>
+        </div>
+        <div class="reminder-settings">
+            <div>symbols:</div>
+            <div>
+                <span class="symbol red"></span> due today
+                <span class="symbol yellow"></span> due soon
+                <span class="symbol green"></span> due later
+            </div>
+            <div>settings:</div>
+            <div>
+                <label><input type="checkbox"> notify you</label>
+                <label><input type="checkbox"> mark as done</label>
+                <label><input type="checkbox"> insert more...</label>
+            </div>
+        </div>
+        <div class="reminder-list">
+            <div class="reminder-item">
+                <span class="symbol red"></span>
+                make butter and toast
+                <button class="trash" onclick="removeReminder(this)">🗑️</button>
+            </div>
+            <div class="reminder-item">
+                <span class="symbol yellow"></span>
+                revise for paper 1 GCSE
+                <button class="trash" onclick="removeReminder(this)">🗑️</button>
+            </div>
+            <div class="reminder-item">
+                <span class="symbol green"></span>
+                cook Gigi Hadid’s pasta
+                <button class="trash" onclick="removeReminder(this)">🗑️</button>
+            </div>
+        </div>
+        <div class="todo-item" data-reminder="Make butter and toast">
+            <span>Make butter and toast</span>
+            <button class="calendar-emoji">📅</button>
+        </div>
+        <div class="todo-item" data-reminder="Revise for paper 1 GCSE">
+            <span>Revise for paper 1 GCSE</span>
+            <button class="calendar-emoji">📅</button>
+        </div>
+        <div class="todo-item" data-reminder="Cook Gigi Hadid’s pasta">
+            <span>Cook Gigi Hadid’s pasta</span>
+            <button class="calendar-emoji">📅</button>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const toggle = document.getElementById('darkModeToggle');
+                toggle.addEventListener('change', function() {
+                    document.body.classList.toggle('dark-mode', this.checked);
+                });
+            });
+        </script>
+        
     </div>
 
     <script src="script.js"></script>
