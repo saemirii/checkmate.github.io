@@ -511,5 +511,6 @@ body.dark-mode button:hover {
 
 input:checked + .slider + .emoji {
     content: "🌞";
+    opacity: 100;
 }
 
