@@ -10,13 +10,19 @@
 </head>
 
 <body>
+    <div class="switch-container">
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+            <span class="emoji">🌙</span>
+        </label>
+    </div>
     <!-- Emoji buttons -->
         <div class="emoji-button">💾 save progress</div>
     <a href="https://github.com/saemirii/checkmate">
         <div class="emoji-button">⭐ star this repo!</div>
     </a>
         <div class="emoji-button">🔐 check-out</div>
-
     <div id="homeMenu" class="home-menu">
         <h1 class="home-title">checkmate!</h1>
         <p class="home-subtext">
@@ -117,6 +123,15 @@
             <span>Cook Gigi Hadid’s pasta</span>
             <button class="calendar-emoji">📅</button>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const toggle = document.getElementById('darkModeToggle');
+                toggle.addEventListener('change', function() {
+                    document.body.classList.toggle('dark-mode', this.checked);
+                });
+            });
+        </script>
         
     </div>
 
