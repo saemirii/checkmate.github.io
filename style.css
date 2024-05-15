@@ -511,4 +511,8 @@ body.dark-mode button:hover {
 
 input:checked + .slider + .emoji {
     content: "🌞";
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main
