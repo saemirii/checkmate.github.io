@@ -346,19 +346,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const studySessionContainer = document.getElementById('study-session-container');
 
     studySessionButton.addEventListener('click', function() {
-        // Hide all elements except emoji buttons and study session container
-        hideElementsExcept(emojiButtons, studySessionContainer);
+        console.log('Study session button clicked!');
+        // Show study session container and emoji buttons, hide other elements
+        showElementsExcept([studySessionContainer, ...emojiButtons]);
     });
 
-    function hideElementsExcept(whiteListElements, visibleElement) {
+    function showElementsExcept(visibleElements) {
         const allElements = document.querySelectorAll('*');
         allElements.forEach(element => {
-            if (!whiteListElements.includes(element) && element !== visibleElement) {
+            if (!visibleElements.includes(element)) {
                 element.style.display = 'none';
             } else {
-                element.style.display = '';
+                element.style.display = ''; // Use default display value
             }
         });
     }
 });
-
