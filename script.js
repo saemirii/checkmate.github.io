@@ -302,4 +302,63 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 
-//push test
+document.getElementById('add-task').addEventListener('click', () => {
+    const taskInput = document.getElementById('new-task');
+    const taskText = taskInput.value.trim();
+    if (taskText !== '') {
+        const newTask = document.createElement('li');
+        newTask.innerHTML = `<span>⬜ ${taskText}</span>`;
+        document.getElementById('tasks').appendChild(newTask);
+        taskInput.value = '';
+    }
+});
+
+document.getElementById('generate-quiz').addEventListener('click', () => {
+    const notes = document.getElementById('notes').value.trim();
+    if (notes) {
+        alert('Quiz generation feature coming soon!');
+        // Here you could implement the functionality to generate quiz from notes
+    }
+});
+
+document.getElementById('start-timer').addEventListener('click', () => {
+    let focusTime;
+    const customHours = document.getElementById('custom-hours').value;
+    if (customHours) {
+        focusTime = customHours * 60;
+    } else {
+        const selectedTime = document.querySelector('input[name="focus-time"]:checked');
+        if (selectedTime) {
+            focusTime = selectedTime.value;
+        } else {
+            alert('Please select or enter a focus time.');
+            return;
+        }
+    }
+    const reason = document.getElementById('reason').value;
+    alert(`Starting a timer for ${focusTime} minutes.\nReason: ${reason}`);
+    // Here you could implement the timer functionality
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const studySessionButton = document.getElementById('study-session');
+    const emojiButtons = document.querySelectorAll('.emoji-button');
+    const studySessionContainer = document.getElementById('study-session-container');
+
+    studySessionButton.addEventListener('click', function() {
+        // Hide all elements except emoji buttons and study session container
+        hideElementsExcept(emojiButtons, studySessionContainer);
+    });
+
+    function hideElementsExcept(whiteListElements, visibleElement) {
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(element => {
+            if (!whiteListElements.includes(element) && element !== visibleElement) {
+                element.style.display = 'none';
+            } else {
+                element.style.display = '';
+            }
+        });
+    }
+});
+

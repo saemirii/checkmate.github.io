@@ -23,12 +23,69 @@
         <div class="emoji-button">⭐ star this repo!</div>
     </a>
         <div class="emoji-button">🔐 check-out</div>
-    <div id="homeMenu" class="home-menu">
+        <div class="emoji-button" id="study-session">⏰ study session</div>
+            <div id="homeMenu" class="home-menu">
         <h1 class="home-title">checkmate!</h1>
         <p class="home-subtext">
             [ a minimalistic task manager ]
         </p>
     </div>
+
+
+    
+
+    <section id="study-session-container" class="container hidden">
+        <h1>study session</h1>
+        <main>
+            <h1>study session</h1>
+            <p>[ a minimalistic task manager ]</p>
+            <div class="container">
+                <section id="focus-mode">
+                    <h2>focus mode</h2>
+                    <form>
+                        <div>
+                            <input type="radio" id="5-minutes" name="focus-time" value="5">
+                            <label for="5-minutes">5 minutes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="10-minutes" name="focus-time" value="10">
+                            <label for="10-minutes">10 minutes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="30-minutes" name="focus-time" value="30">
+                            <label for="30-minutes">30 minutes</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="1-hour" name="focus-time" value="60">
+                            <label for="1-hour">1 hour</label>
+                        </div>
+                        <div>
+                            <input type="number" id="custom-hours" name="focus-time" min="1" placeholder="__ hours">
+                        </div>
+                        <div>
+                            <input type="text" id="reason" placeholder="reason:">
+                        </div>
+                        <button type="button" id="start-timer">start timer!</button>
+                    </form>
+                </section>
+                <section id="to-do-list">
+                    <h2>to-do list</h2>
+                    <ul id="tasks">
+                        <li><span>🟥 make butter and toast</span></li>
+                        <li><span>🟨 check pull requests</span></li>
+                        <li><span>⬜ wash the dishes</span></li>
+                    </ul>
+                    <input type="text" id="new-task" placeholder="add a to-do...">
+                    <button id="add-task">↩</button>
+                    <button id="main-menu">go to main menu</button>
+                </section>
+                <section id="exam-reviewer">
+                    <h2>exam reviewer</h2>
+                    <textarea id="notes" placeholder="paste notes"></textarea>
+                    <button id="generate-quiz">generate quiz</button>
+                </section>
+            </div>
+        </main>    </section>
 
     <button id="checkInButton" onclick="showLogin()">check-in</button>
 

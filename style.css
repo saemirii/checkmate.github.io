@@ -514,3 +514,102 @@ input:checked + .slider + .emoji {
     opacity: 100;
 }
 
+
+
+header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+h1 {
+    margin: 0;
+}
+
+p {
+    font-style: italic;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 10px;
+    max-width: 300px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+form div,
+form input,
+form button {
+    margin-bottom: 10px;
+}
+
+#tasks {
+    list-style-type: none;
+    padding: 0;
+}
+
+#tasks li {
+    margin-bottom: 5px;
+}
+
+#tasks li span {
+    display: inline-block;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#tasks li span::before {
+    content: '⬜';
+    margin-right: 10px;
+}
+
+#tasks li span:before {
+    content: attr(data-status);
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button#start-timer {
+    background-color: #d4f1d4;
+}
+
+button#main-menu {
+    background-color: #ffcccc;
+}
+
+button#generate-quiz {
+    background-color: #ffedcc;
+}
+
+#study-session-container {
+    display: none;
+}
+
+/* Show the study session container when it's not hidden */
+#study-session-container.visible {
+    display: block;
+}
