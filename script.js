@@ -1,4 +1,13 @@
+import {addTodo} from "./js/addTodo.js"
+
 var setDueDateButton = document.getElementById('todoDueDate')
+const todoInput = document.getElementById('todoInput')
+
+todoInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        addTodo()
+    }
+})
 
 
 function showLogin() {
@@ -70,107 +79,6 @@ function showHideDatePicker() {
 }
 
 
-function addTodo() {
-    var inputField = document.getElementById("todoInput");
-    const dateInput = document.getElementById('datePicker');
-
-    var inputValue = inputField.value;
-    if (inputValue.trim() !== "") {
-        var listItem = document.createElement("li");
-        listItem.dataset.dd = dateInput.value;
-        listItem.style.position = "relative";
-
-        // Trash icon
-        var trashIcon = document.createElement("span");
-        trashIcon.innerHTML = "&#128465;"; // Unicode for trash can emoji
-        trashIcon.classList.add("trash-icon");
-        trashIcon.onclick = function (event) {
-            listItem.classList.add("fade-out");
-            setTimeout(function () {
-                listItem.remove();
-            }, 500);
-            event.stopPropagation(); // Prevent the task from being toggled when clicking the trash icon
-        };
-        listItem.appendChild(trashIcon);
-
-        var calendarIcon = document.createElement("span");
-        var dueDateContainer = document.createElement("div");
-        var dueDateText = document.createElement('span')
-
-        dueDateContainer.className = "due-date-container"
-        dueDateContainer.style.display = "none";
-
-        calendarIcon.innerHTML = "&#128197;"; // Unicode for calendar emoji
-        calendarIcon.style.marginLeft = "auto"; // Right positioning
-        calendarIcon.style.cursor = "pointer"; // Add cursor pointer
-        calendarIcon.style.marginRight = "6px";
-        listItem.appendChild(calendarIcon);
-        listItem.appendChild(dueDateContainer);
-
-        dueDateContainer.appendChild(dueDateText);
-
-        // Show due date when user clicks on calendar icon
-        calendarIcon.onclick = function (event) {
-            event.stopPropagation();
-            if(listItem.dataset.dd !== "") {
-                dueDateText.innerText = `This task is due on: ${listItem.dataset.dd}`;
-            } else {
-                dueDateText.innerText = "This task has no due date";
-            }
-            if(dueDateContainer.style.display === "none") {
-                dueDateContainer.style.display = "block";
-            } else {
-                dueDateContainer.style.display = "none";
-            }
-        };
-
-        // Task text
-        var taskText = document.createElement("span");
-        taskText.textContent = inputValue;
-        listItem.appendChild(taskText);
-
-        // Status box and circle (unchanged)
-        var statusBox = document.createElement("div");
-        statusBox.innerText = "Not Started";
-        statusBox.classList.add("status-box");
-        listItem.appendChild(statusBox);
-
-        var statusCircle = document.createElement("div");
-        statusCircle.classList.add("status-circle", "not-started");
-        listItem.appendChild(statusCircle);
-
-        // Click event (unchanged)
-        listItem.onclick = function () {
-            this.classList.toggle("completed");
-        };
-
-        // Context menu event (unchanged)
-        listItem.oncontextmenu = function (event) {
-            event.preventDefault();
-            var contextMenu = document.getElementById("contextMenu");
-            contextMenu.style.left = event.pageX + "px";
-            contextMenu.style.top = event.pageY + "px";
-            contextMenu.style.display = "block";
-            window.clickedTodo = this;
-        };
-
-        // Add fade-in animation
-        listItem.classList.add("fadeIn");
-
-        // Append the list item to the todo list
-        document.getElementById("todo-list").appendChild(listItem);
-
-        // Clear date picker and hide it if its visible
-        showHideDatePicker()
-        dateInput.value = "";
-        // Clear input field
-        inputField.value = "";
-
-    } else {
-        alert("Please enter a task!");
-    }
-}
-
 document.addEventListener("click", function (event) {
     var contextMenu = document.getElementById("contextMenu");
     if (contextMenu.style.display === "block") {
@@ -182,7 +90,7 @@ document.getElementById("markDone").addEventListener("click", function () {
     if (window.clickedTodo) {
         window.clickedTodo.classList.add("completed");
         window.clickedTodo.querySelector(".status-box").innerText = "done";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "#BEE4A8"; // Change to green
+        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "var(--green-darker)"; // Change to green
         window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
     }
 });
@@ -191,7 +99,7 @@ document.getElementById("markInProgress").addEventListener("click", function () 
     if (window.clickedTodo) {
         window.clickedTodo.classList.remove("completed", "not-started");
         window.clickedTodo.querySelector(".status-box").innerText = "In Progress";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "#FFD789"; // Change to light yellow
+        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "var(--yellow-lighter)"; // Change to light yellow
         window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
     }
 });
@@ -200,7 +108,7 @@ document.getElementById("markNotStarted").addEventListener("click", function () 
     if (window.clickedTodo) {
         window.clickedTodo.classList.remove("completed", "in-progress");
         window.clickedTodo.querySelector(".status-box").innerText = "Not Started";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "#FF9494"; // Change to light gray
+        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "var(--red-lighter)"; // Change to light gray
         window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
     }
 });
@@ -247,11 +155,6 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-function removeReminder(button) {
-    const reminderItem = button.parentElement;
-    reminderItem.remove();
-}
-
 document.querySelectorAll('.calendar-emoji').forEach(button => {
     button.addEventListener('click', function() {
         const todoItem = this.parentElement;
@@ -285,7 +188,7 @@ function removeReminder(button) {
 }
 
 document.getElementById('darkModeToggle').addEventListener('change', function() {
-    document.body.classList.toggle('dark-mode', this.checked);
+    document.documentElement.classList.toggle('dark-mode', this.checked);
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -293,7 +196,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const emoji = document.querySelector('.emoji');
     
     toggle.addEventListener('change', function() {
-        document.body.classList.toggle('dark-mode', this.checked);
+        document.documentElement.classList.toggle('dark-mode', this.checked);
         if (this.checked) {
             emoji.textContent = '🌞';
         } else {
@@ -348,10 +251,11 @@ document.addEventListener('DOMContentLoaded', function() {
     studySessionButton.addEventListener('click', function() {
         console.log('Study session button clicked!');
         // Show study session container and emoji buttons, hide other elements
-        showElementsExcept([studySessionContainer, ...emojiButtons]);
+        showElementsExcept([studySessionContainer, document.body, document.documentElement, ...emojiButtons]);
     });
 
     function showElementsExcept(visibleElements) {
+      console.log(visibleElements);
         const allElements = document.querySelectorAll('*');
         allElements.forEach(element => {
             if (!visibleElements.includes(element)) {
