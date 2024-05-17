@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showElementsExcept(visibleElements) {
       console.log(visibleElements);
-        const allElements = document.querySelectorAll('*');
+        const allElements = document.querySelectorAll('body > *');
         allElements.forEach(element => {
             if (!visibleElements.includes(element)) {
                 element.style.display = 'none';
