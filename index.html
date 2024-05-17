@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light-mode">
 
 <head>
     <meta charset="UTF-8">
@@ -34,7 +34,7 @@
 
     
 
-    <section id="study-session-container" class="container hidden">
+    <section id="study-session-container" class="container hidden" style="display: none">
         <h1>study session</h1>
         <main>
             <h1>study session</h1>
@@ -93,8 +93,7 @@
     <div id="todo-input-container" style="display: none;">
         <div id="todo-input-wrapper">
             <label>
-                <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn"
-                       onkeydown="if (event.keyCode === 13) addTodo()">
+                <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn">
             </label>
             <button id="todoDueDate">Set due date</button>
             <label style="display: none">
@@ -185,14 +184,14 @@
             document.addEventListener('DOMContentLoaded', (event) => {
                 const toggle = document.getElementById('darkModeToggle');
                 toggle.addEventListener('change', function() {
-                    document.body.classList.toggle('dark-mode', this.checked);
+                    document.documentElement.classList.toggle('dark-mode', this.checked);
                 });
             });
         </script>
         
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 
 </html>
