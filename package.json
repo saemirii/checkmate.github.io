@@ -1,0 +1,17 @@
+{
+  "name": "checkmate",
+  "version": "1.0.0",
+  "description": "![checkmate (2)](https://github.com/saemirii/checkmate/assets/88029789/9dbe5874-2d3c-4044-99f4-a3ebee06366f)",
+  "main": "script.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.2.11"
+  }
+}

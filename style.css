@@ -46,12 +46,12 @@
 
 @font-face {
     font-family: "Kollektif";
-    src: url(Kollektif.ttf);
+    src: url(/fonts/Kollektif.ttf);
 }
 
 @font-face {
     font-family: "Kollektif-Italic";
-    src: url(Kollektif-Italic.ttf)
+    src: url(/fonts/Kollektif-Italic.ttf)
 }
 
 body {
@@ -643,11 +643,12 @@ button#generate-quiz {
     background-color: #ffedcc;
 }
 
-#study-session-container {
-    display: none;
-}
+/* Don't need these because you are modifying the styles directly in the javascript */
+/*#study-session-container {*/
+/*    display: none;*/
+/*}*/
 
-/* Show the study session container when it's not hidden */
-#study-session-container.visible {
-    display: block;
-}
+/*!* Show the study session container when it's not hidden *!*/
+/*#study-session-container.visible {*/
+/*    display: block;*/
+/*}*/
