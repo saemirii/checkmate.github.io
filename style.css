@@ -108,3 +108,8 @@ body {
         @apply bg-amber-200
     }
 }
+
+.trash-icon{
+    margin-right: 10px;
+    cursor: pointer;
+}
