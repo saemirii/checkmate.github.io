@@ -12,6 +12,7 @@
     src: url("/fonts/Kollektif-Italic.ttf") format("truetype");
 }
 
+
 body {
     font-family: 'Kollektif', sans-serif; /* Apply Kollektif font to the entire page */
 }
