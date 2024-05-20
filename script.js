@@ -1,3 +1,4 @@
+import "./style.css"
 import "./js/showLogin.js"
 import "./js/addTodo.js"
 
