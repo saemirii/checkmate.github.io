@@ -1,111 +1,20 @@
-.light-mode {
-    --bg-color: #ffffff;
-    --font-color: #000000;
-    --font-subtext-color: #666666;
-    --border-color-light: #cccccc;
-    --border-color-dark: #000000;
-    --input-bg-color: #ffffff;
-    --input-hover-bg-color: #f0f0f0;
-    --input-focus-bg-color: #e0e0e0;
-    --todo-li-bg-color: #ffffff;
-    --status-box-bg-color: #f0f0f0;
-    --status-box-text-color: #333333;
-    --green-lighter: #dae6c0;
-    --green-darker: #BEE4A8;
-    --green-darkest: #2ecc71;
-    --yellow-lighter: #FFD789;
-    --yellow-darker: #f1c40f;
-    --red-lighter: #FF9494;
-    --red-darker: #ff6b6b;
-    --trash-color: #888888;
-    --input-checked: #bdbdbd;
-}
-
-.dark-mode {
-    --bg-color: #121212;
-    --font-color: #ffffff;
-    --font-subtext-color: #b4b4b4;
-    --border-color-light: #4d4d4d;
-    --border-color-dark: #484848;
-    --input-bg-color: #1c1c1c;
-    --input-hover-bg-color: #232323;
-    --input-focus-bg-color: #2c2c2c;
-    --todo-li-bg-color: #383838;
-    --status-box-bg-color: #f0f0f0;
-    --status-box-text-color: #333333;
-    --green-lighter: #b0c289;
-    --green-darker: #66ab3e;
-    --green-darkest: #1cb45c;
-    --yellow-lighter: #ecb140;
-    --yellow-darker: #c7a106;
-    --red-lighter: #e54747;
-    --red-darker: #c43737;
-    --trash-color: #888888;
-    --input-checked: #525252;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
     font-family: "Kollektif";
-    src: url(/fonts/Kollektif.ttf);
+    src: url("/fonts/Kollektif.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Kollektif-Italic";
-    src: url(/fonts/Kollektif-Italic.ttf)
+    src: url("/fonts/Kollektif-Italic.ttf") format("truetype");
 }
+
 
 body {
     font-family: 'Kollektif', sans-serif; /* Apply Kollektif font to the entire page */
-    background-color: var(--bg-color);
-    color: var(--font-color);
-    margin: 0;
-    padding: 0;
-    transition: background-color 0.4s, color 0.4s;
-}
-
-a,
-a:active,
-a:visited {
-    color: inherit;
-}
-
-input[type="text"] {
-    color: inherit;
-}
-
-.home-menu {
-    text-align: center;
-    margin-top: 20%;
-}
-
-.home-title {
-    font-size: 75px;
-    text-align: center;
-    color: var(--font-color);
-    font-family: "Kollektif-Italic", sans-serif;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0.5; /* Start with opacity 0 to create fade-in effect */
-    transition: opacity 1s ease; /* Smooth transition for opacity */
-}
-
-
-.home-title:hover {
-    opacity: 1; /* Fade in the text when hovering */
-    text-decoration: line-through; /* Add strike-through effect when hovering */
-}
-
-
-.home-title.fade-in {
-    opacity: 1; /* Set opacity to 1 to fade in */
-}
-
-/* Animation for strike-through */
-.home-title.strike-through {
-    text-decoration: line-through;
-    animation: strikeThrough 2s forwards; /* Animation to add strike-through effect */
 }
 
 @keyframes strikeThrough {
@@ -113,542 +22,89 @@ input[type="text"] {
     100% { text-decoration-color: black; }
 }
 
-.home-subtext {
-    color: var(--font-subtext-color);
-    position: absolute;
-    top: 53%;
-    left: 50%;
-    letter-spacing: 0.075em;
-    text-align: center;
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    transform: translate(-50%, -50%);
-}
-
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-#todoTitle {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 45px;
-    color: var(--font-color);
-    font-family: "Kollektif", sans-serif;
-}
-
-#todo-input-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    padding: 5px;
-}
-
-#todo-input-wrapper {
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    align-items: center;
-    width: 450px; /* Adjust the width to match the width of the todo tasks */
-    border: 3px solid var(--border-color-dark);
-    border-radius: 17px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16.8px;
-    letter-spacing: 0.075em;
-    background-color: var(--input-bg-color);
-    transition: background-color 0.3s ease;
-}
-#todoInput {
-    border-radius: 17px 0 0 17px;
-    flex: 1;
-    padding: 10px 20px; /* Adjust padding to match the padding of the todo tasks */
-}
-
-#todoInput, #todoDueDate {
-    font-family: inherit;
-    font-size: inherit;
-    border: none;
-    outline: none;
-    background-color: transparent;
-}
-
-#todo-input-wrapper:hover {
-    background-color: var(--input-hover-bg-color);
-}
-
-#todo-input-wrapper:has(#todoInput:focus) {
-    background-color: var(--input-focus-bg-color);
-}
-
-#todoDueDate {
-    margin: 6px;
-    border: 3px solid var(--border-color-dark);
-    cursor: pointer;
-    border-radius: 12px;
-    padding: 10px;
-}
-
-#todo-list {
-    margin: 0 auto;
-    padding: 0;
-    max-width: 450px;
-}
-
-#todo-list li {
-    list-style-type: none;
-    margin-bottom: 5px;
-    background-color: var(--todo-li-bg-color);
-    padding: 10px;
-    border-radius: 17px;
-    border: 3px solid var(--border-color-dark);
-    transition: all 0.3s ease;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16.8px;
-    letter-spacing: 0.075em;
-    position: relative;
-}
-
-#todo-list li.completed {
-    text-decoration: line-through;
-    background-color: var(--green-lighter);
-}
-
-#datePicker {
-    padding: 0.8rem;
-    font-size: 1rem;
-    border-radius: 15px;
-    color: inherit;
-    border: none;
-    background-color: var(--input-bg-color);
-}
-
-.expandLabel {
-    margin: 0 6px 0 auto;
-    cursor: pointer;
-}
-.expandLabel input[type="checkbox"] {
-    position: absolute;
-    display: none;
-}
-
-.expandContent {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-}
-.expandContent p {
-    color: var(--font-subtext-color);
-    margin: 0.5rem 0 0 0;
-}
-
-.expanded {
-    max-height: 200px;
-}
-
-label:has(#datePicker) {
-    position: absolute;
-    top: 50%;
-    right: 4px;
-    transform: translateY(-50%);
-}
-.status-box {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 10px;
-    background-color: var(--status-box-bg-color); /* Default background color (light gray) */
-    border-radius: 17px;
-    font-size: 14px;
-    color: var(--status-box-text-color); /* Default text color (dark gray) */
-}
-
-/* Not Started */
-.not-started .status-box {
-    background-color: var(--green-darker); /* Light Green */
-    color: var(--bg-color); /* Text color */
-}
-
-/* In Progress */
-.in-progress .status-box {
-    background-color: var(--yellow-lighter); /* Light Yellow */
-    color: var(--status-box-text-color); /* Text color */
-}
-
-/* Completed */
-.completed .status-box {
-    background-color: var(--red-lighter); /* Light Red */
-    color: var(--bg-color); /* Text color */
-}
-
-.context-menu {
-    display: none;
-    position: absolute;
-    background-color: var(--bg-color);
-    border: 1px solid var(--border-color-light);
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-.context-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.context-menu ul li {
-    padding: 8px 12px;
-    cursor: pointer;
-}
-
-.context-menu ul li:hover {
-    background-color: var(--green-lighter);
-}
-
-.div {
-    @font-face {
-        font-family: 'Roboto', sans-serif;
+@layer base {
+    body {
+        @apply bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200
+    }
+    p {
+        @apply italic
+    }
+    section {
+        @apply p-[20px] rounded shadow flex-1 m-[10px] max-w-[300px]
+    }
+    form div,
+    form input,
+    form button {
+        @apply mb-[10px]
     }
 }
 
-button#checkInButton {
-    position: absolute;
-    bottom: 32%; /* Adjust the percentage value to move the button further down */
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Roboto', sans-serif;
-    font-size: 16.8px;
-    letter-spacing: 0.075em;
-    background-color: var(--font-color);
-    color: var(--bg-color);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10%;
-    cursor: pointer;
-    z-index: 1; /* Ensure the button stays above other elements */
+@layer components {
+    .slider {
+        @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0
+        bg-neutral-300 dark:bg-neutral-700 transition-all rounded-full
+    }
+    .slider:before {
+        content: "";
+        @apply absolute bg-neutral-100 dark:bg-neutral-500 transition-all rounded-full
+        h-[20px] w-[20px] left-[2px] bottom-[2px]
+    }
+    input:checked + .slider:before {
+        @apply transform translate-x-[26px]
+    }
+    .emoji {
+        @apply absolute top-[2px] right-[5px] text-[18px] mr-[50px]
+        mb-[10px]
+    }
+    .btn {
+        @apply bg-neutral-900 text-white px-8 py-2 rounded dark:bg-neutral-100 dark:text-black
+    }
+    .container {
+        @apply flex justify-around w-full max-w-[1200px] mt-[20px]
+    }
+    .home-title {
+        @apply text-[75px] text-center text-gray-800 absolute top-[40%] left-1/2
+        opacity-50 transition-opacity duration-1000 ease-in transform
+        translate-x-[-50%] translate-y-[-50%] hover:opacity-100 hover:line-through
+    }
+    .home-title .fade-in {
+        @apply opacity-100 /* <--- not sure we need this */
+    }
+    .home-title .strike-through {
+        animation: strikeThrough 2s forwards;
+        @apply line-through
+    }
+    .home-subtext {
+        font-family: "Roboto", sans-serif;
+        @apply text-gray-500 absolute top-[53%] left-1/2 text-center text-[20px]
+        tracking-[0.075rem] transform translate-x-[-50%] translate-y-[-50%]
+    }
+    .fade-out {
+        @apply opacity-0 transition-opacity duration-500 ease-in
+    }
+    #checkInButton {
+        font-family: "Roboto", sans-serif;
+        @apply absolute bottom-[32%] left-1/2 transform -translate-x-1/2
+        tracking-[0.075rem] text-[17px] px-[20px] py-[10px] rounded
+    }
+    #tasks li {
+        @apply mb-[5px]
+    }
+    #tasks li span {
+        @apply inline-block w-full p-[5px] rounded bg-neutral-200 shadow
+        dark:bg-neutral-800 z-10
+    }
+    #tasks li span:before {
+        content: attr(data-status);
+        @apply mr-[10px]
+    }
+    #start-time {
+        @apply bg-neutral-200
+    }
+    #main-menu {
+        @apply bg-rose-200
+    }
+    #generate-quiz {
+        @apply bg-amber-200
+    }
 }
-
-.trash-icon {
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-/* New styles for emoji buttons */
-.emoji-button {
-    font-size: 16.8px;
-    color: inherit;
-    margin-right: 10px;
-    margin-left: 15px;
-    margin-top: 20px;
-    cursor: pointer;
-    font-family: "Kollektif", sans-serif;
-    display: block; /* Ensure each emoji is on a new row */
-    margin-bottom: 13px; /* Add margin between each emoji */
-    text-decoration: none;
-}
-
-#loginContainer {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#loginForm {
-    margin-top: 20px;
-}
-
-#loginForm label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-#loginForm input[type="text"],
-#loginForm input[type="password"] {
-    width: 200px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid var(--border-color-ligh);
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-#loginForm input[type="submit"] {
-    background-color: var(--font-color);
-    color: var(--bg-color);
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#loginForm input[type="submit"]:hover {
-    background-color: var(--status-box-text-color);
-}
-
-#reminder-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    background: var(--bg-color);
-    height: 100%;
-    overflow-y: auto;
-    z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    opacity: 0;
-    border: 1px solid var(--border-color-light); /* Thin border */
-    border-radius: 10px; /* Rounded corners */
-    outline: 2px solid var(--font-color); /* Outline */
-}
-
-#reminder-container.visible {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.reminder-header {
-    background: var(--bg-color);
-    padding: 10px;
-    border-bottom: 1px solid var(--border-color-light);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top-left-radius: 10px; /* Round top corners of the header */
-    border-top-right-radius: 10px;
-}
-
-.reminder-settings {
-    padding: 10px;
-    border-bottom: 1px solid var(--border-color-light);
-}
-
-.symbol {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
-.red { background: var(--red-darker); }
-.yellow { background: var(--yellow-darker); }
-.green { background: var(--green-darkest); }
-
-.reminder-list {
-    padding: 10px;
-}
-
-.reminder-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border-color-light);
-}
-
-.trash {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--trash-color);
-    font-size: 16px;
-    margin-left: 10px;
-}
-
-.inverted {
-    color: var(--bg-color);
-}
-
-.switch-container {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--border-color-light);
-    transition: .4s;
-    border-radius: 24px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 2px;
-    bottom: 2px;
-    background-color: var(--bg-color);
-    transition: .4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider {
-    background-color: var(--input-checked);
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-.emoji {
-    position: absolute;
-    top: 2px;
-    right: 5px;
-    font-size: 18px;
-}
-
-input:checked + .slider + .emoji {
-    content: "🌞";
-}
-
-button {
-    background-color: transparent;
-    color: var(--body-color);
-    border: none;
-    transition: all 0.4s;
-}
-
-button:hover {
-    background-color: var(--border-color-light);
-}
-
-.emoji {
-    font-size: 18px;
-    margin-right: 50px;
-    margin-bottom: 10px;
-}
-
-input:checked + .slider + .emoji {
-    content: "🌞";
-    opacity: 100;
-}
-
-
-
-header button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2em;
-}
-
-h1 {
-    margin: 0;
-}
-
-p {
-    font-style: italic;
-}
-
-.container {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 1200px;
-    margin-top: 20px;
-}
-
-section {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    margin: 10px;
-    max-width: 300px;
-}
-
-h2 {
-    margin-top: 0;
-}
-
-form div,
-form input,
-form button {
-    margin-bottom: 10px;
-}
-
-#tasks {
-    list-style-type: none;
-    padding: 0;
-}
-
-#tasks li {
-    margin-bottom: 5px;
-}
-
-#tasks li span {
-    display: inline-block;
-    width: 100%;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-#tasks li span::before {
-    content: '⬜';
-    margin-right: 10px;
-}
-
-#tasks li span:before {
-    content: attr(data-status);
-}
-
-button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button#start-timer {
-    background-color: #d4f1d4;
-}
-
-button#main-menu {
-    background-color: #ffcccc;
-}
-
-button#generate-quiz {
-    background-color: #ffedcc;
-}
-
-/* Don't need these because you are modifying the styles directly in the javascript */
-/*#study-session-container {*/
-/*    display: none;*/
-/*}*/
-
-/*!* Show the study session container when it's not hidden *!*/
-/*#study-session-container.visible {*/
-/*    display: block;*/
-/*}*/

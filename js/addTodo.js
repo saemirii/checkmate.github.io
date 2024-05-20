@@ -1,8 +1,21 @@
-export function addTodo() {
+const todoInput = document.getElementById('todoInput')
+const setDueDateButton = document.getElementById('todoDueDate')
+
+
+todoInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.keyCode === 13) {
+    addTodo()
+  }
+})
+
+setDueDateButton.addEventListener("click", showHideDatePicker)
+
+
+function addTodo() {
   const inputField = document.getElementById("todoInput");
   const dateInput = document.getElementById('datePicker');
 
-  var inputValue = inputField.value;
+  const inputValue = inputField.value;
   if (inputValue.trim() !== "") {
     const listItem = document.createElement("li");
     listItem.dataset.dd = dateInput.value;
@@ -51,18 +64,18 @@ export function addTodo() {
     })
 
     // Task text
-    var taskText = document.createElement("span");
+    const taskText = document.createElement("span");
     taskText.textContent = inputValue;
     listItem.appendChild(taskText);
     listItem.appendChild(expandContent);
 
     // Status box and circle (unchanged)
-    var statusBox = document.createElement("div");
+    const statusBox = document.createElement("div");
     statusBox.innerText = "Not Started";
     statusBox.classList.add("status-box");
     listItem.appendChild(statusBox);
 
-    var statusCircle = document.createElement("div");
+    const statusCircle = document.createElement("div");
     statusCircle.classList.add("status-circle", "not-started");
     listItem.appendChild(statusCircle);
 
@@ -74,7 +87,7 @@ export function addTodo() {
     // Context menu event (unchanged)
     listItem.oncontextmenu = function (event) {
       event.preventDefault();
-      var contextMenu = document.getElementById("contextMenu");
+      const contextMenu = document.getElementById("contextMenu");
       contextMenu.style.left = event.pageX + "px";
       contextMenu.style.top = event.pageY + "px";
       contextMenu.style.display = "block";
@@ -84,7 +97,7 @@ export function addTodo() {
     // Add fade-in animation
     listItem.classList.add("fadeIn");
 
-    // Append the list item to the todo list
+    // Append the item to the list
     document.getElementById("todo-list").appendChild(listItem);
 
     // Clear date picker and hide it if its visible
@@ -95,5 +108,16 @@ export function addTodo() {
 
   } else {
     alert("Please enter a task!");
+  }
+}
+
+
+function showHideDatePicker() {
+  const dateInput = document.getElementById('datePicker');
+  const dateInputParent = dateInput.parentElement;
+  if(dateInputParent.style.display === "none") {
+    dateInputParent.style.display = "block";
+  } else {
+    dateInputParent.style.display = "none";
   }
 }

@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" class="light-mode">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>checkmate!</title>
   <link rel="icon" type="image/x-icon" href="/images/logo.png">
-  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="switch-container">
-  <label class="switch">
-    <input type="checkbox" id="darkModeToggle">
+<div class="fixed top-[10px] right-[10px]">
+  <label class="relative inline-block w-[50px] h-[24px]">
+    <input class="opacity-0 w-0 h-0" type="checkbox" id="darkModeToggle">
     <span class="slider"></span>
     <span class="emoji">🌙</span>
   </label>
@@ -25,7 +24,7 @@
 </a>
 <div class="emoji-button">🔐 check-out</div>
 <div class="emoji-button" id="study-session">⏰ study session</div>
-<div id="homeMenu" class="home-menu">
+<div id="homeMenu" class="text-center mt-[20%]">
   <h1 class="home-title">checkmate!</h1>
   <p class="home-subtext">
     [ a minimalistic task manager ]
@@ -86,7 +85,7 @@
   </main>
 </section>
 
-<button id="checkInButton" onclick="showLogin()">check-in</button>
+<button id="checkInButton" class="btn">check-in</button>
 
 <h2 id="todoTitle" style="display: none;">To-Do List</h2>
 <div id="todo-input-container" style="display: none;">

@@ -1,55 +1,15 @@
-import {addTodo} from "./js/addTodo.js"
+import "./style.css"
+import "./js/showLogin.js"
+import "./js/addTodo.js"
 
-var setDueDateButton = document.getElementById('todoDueDate')
-const todoInput = document.getElementById('todoInput')
-
-todoInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.keyCode === 13) {
-        addTodo()
-    }
-})
-
-
-function showLogin() {
-    var homeMenu = document.getElementById("homeMenu");
-    var loginContainer = document.getElementById("loginContainer");
-    var checkInButton = document.getElementById("checkInButton");
-
-    homeMenu.classList.add("fade-out");
-    checkInButton.style.display = "none";
-    setTimeout(function () {
-        homeMenu.style.display = "none";
-        loginContainer.style.display = "block";
-        loginContainer.classList.add("fadeIn");
-    }, 500);
-}
-
-document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
-
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    var agreeTos = document.getElementById("agreeTos").checked;
-
-    // Validate username, password, and TOS agreement
-    if (username.trim() === "" || password.trim() === "" || !agreeTos) {
-        alert("Please fill in all fields and agree to the Terms of Service.");
-        return;
-    }
-
-    // Simulate authentication (replace with actual authentication logic)
-    // For demonstration purposes, assume successful login and redirect to main page
-    alert("Login successful. Redirecting to main page...");
-    window.location.href = "index.html"; // Redirect to main page after successful login
-});
-
+// Show the main content of the page
 document.addEventListener("keydown", function (event) {
     if (event.code === 'Enter' || event.code === 'Space') {
-        var homeMenu = document.getElementById("homeMenu");
-        var todoTitle = document.getElementById("todoTitle");
-        var todoInputContainer = document.getElementById("todo-input-container");
-        var todoList = document.getElementById("todo-list");
-        var checkInButton = document.getElementById("checkInButton");
+        const homeMenu = document.getElementById("homeMenu");
+        const todoTitle = document.getElementById("todoTitle");
+        const todoInputContainer = document.getElementById("todo-input-container");
+        const todoList = document.getElementById("todo-list");
+        const checkInButton = document.getElementById("checkInButton");
 
         homeMenu.classList.add("fade-out");
         checkInButton.style.display = "none";
@@ -65,22 +25,8 @@ document.addEventListener("keydown", function (event) {
     }
 });
 
-// Show the date picker when user clicks on the Set due date button
-setDueDateButton.addEventListener("click", showHideDatePicker)
-
-function showHideDatePicker() {
-    const dateInput = document.getElementById('datePicker');
-    const dateInputParent = dateInput.parentElement;
-    if(dateInputParent.style.display === "none") {
-        dateInputParent.style.display = "block";
-    } else {
-        dateInputParent.style.display = "none";
-    }
-}
-
-
 document.addEventListener("click", function (event) {
-    var contextMenu = document.getElementById("contextMenu");
+    const contextMenu = document.getElementById("contextMenu");
     if (contextMenu.style.display === "block") {
         contextMenu.style.display = "none";
     }
@@ -90,7 +36,7 @@ document.getElementById("markDone").addEventListener("click", function () {
     if (window.clickedTodo) {
         window.clickedTodo.classList.add("completed");
         window.clickedTodo.querySelector(".status-box").innerText = "done";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "var(--green-darker)"; // Change to green
+        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "const(--green-darker)"; // Change to green
         window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
     }
 });
@@ -99,7 +45,7 @@ document.getElementById("markInProgress").addEventListener("click", function () 
     if (window.clickedTodo) {
         window.clickedTodo.classList.remove("completed", "not-started");
         window.clickedTodo.querySelector(".status-box").innerText = "In Progress";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "var(--yellow-lighter)"; // Change to light yellow
+        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "const(--yellow-lighter)"; // Change to light yellow
         window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
     }
 });
@@ -108,45 +54,10 @@ document.getElementById("markNotStarted").addEventListener("click", function () 
     if (window.clickedTodo) {
         window.clickedTodo.classList.remove("completed", "in-progress");
         window.clickedTodo.querySelector(".status-box").innerText = "Not Started";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "var(--red-lighter)"; // Change to light gray
+        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "const(--red-lighter)"; // Change to light gray
         window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
     }
 });
-
-document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
-
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    var agreeTos = document.getElementById("agreeTos").checked;
-
-    // Simulate validation against database entries (replace with actual database logic)
-    if (validateUser(username, password)) {
-        // Successful login
-        alert("Login successful. Redirecting to main page...");
-        window.location.href = "index.html"; // Redirect to main page after successful login
-    } else {
-        // Invalid credentials
-        alert("Invalid username or password.");
-    }
-});
-
-function validateUser(username, password) {
-    // Simulated database entries
-    var users = [
-        { username: "user1", password: "password1" },
-        { username: "user2", password: "password2" },
-        // Add more user entries as needed
-    ];
-
-    // Check if the username and password match any entry in the database
-    for (var i = 0; i < users.length; i++) {
-        if (users[i].username === username && users[i].password === password) {
-            return true; // Match found
-        }
-    }
-    return false; // No match found
-}
 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Shift') {
@@ -187,16 +98,12 @@ function removeReminder(button) {
     reminderItem.remove();
 }
 
-document.getElementById('darkModeToggle').addEventListener('change', function() {
-    document.documentElement.classList.toggle('dark-mode', this.checked);
-});
-
 document.addEventListener('DOMContentLoaded', (event) => {
     const toggle = document.getElementById('darkModeToggle');
     const emoji = document.querySelector('.emoji');
     
     toggle.addEventListener('change', function() {
-        document.documentElement.classList.toggle('dark-mode', this.checked);
+        document.documentElement.classList.toggle('dark', this.checked);
         if (this.checked) {
             emoji.textContent = '🌞';
         } else {
