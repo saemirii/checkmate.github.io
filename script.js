@@ -70,7 +70,8 @@ document.getElementById("markNotStarted").addEventListener("click", function () 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Shift') {
         const reminderContainer = document.getElementById('reminder-container');
-        reminderContainer.classList.toggle('visible');
+        // reminderContainer.classList.toggle('hidden');
+        reminderContainer.classList.toggle('visible')
     }
 });
 
@@ -174,9 +175,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const allElements = document.querySelectorAll('body > *');
         allElements.forEach(element => {
             if (!visibleElements.includes(element)) {
-                element.style.display = 'none';
+                element.classList.add("hidden")
             } else {
-                element.style.display = ''; // Use default display value
+                element.classList.remove('hidden'); // Use default display value
             }
         });
     }

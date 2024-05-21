@@ -19,7 +19,6 @@ function addTodo() {
   if (inputValue.trim() !== "") {
     const listItem = document.createElement("li");
     listItem.dataset.dd = dateInput.value;
-    listItem.style.position = "relative";
 
     // Trash icon
     const trashIcon = document.createElement("span");
@@ -101,7 +100,8 @@ function addTodo() {
     document.getElementById("todo-list").appendChild(listItem);
 
     // Clear date picker and hide it if its visible
-    dateInput.parentElement.style.display = "none";
+    dateInput.parentElement.className = "hidden";
+    setDueDateButton.className = "block"
     dateInput.value = "";
     // Clear input field
     inputField.value = "";
@@ -115,9 +115,11 @@ function addTodo() {
 function showHideDatePicker() {
   const dateInput = document.getElementById('datePicker');
   const dateInputParent = dateInput.parentElement;
-  if(dateInputParent.style.display === "none") {
-    dateInputParent.style.display = "block";
+  if(dateInputParent.className === "hidden") {
+    setDueDateButton.className = "hidden"
+    dateInputParent.className = "block";
   } else {
-    dateInputParent.style.display = "none";
+    setDueDateButton.className = "block"
+    dateInputParent.className = "hidden";
   }
 }
