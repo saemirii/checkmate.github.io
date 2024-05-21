@@ -34,30 +34,38 @@ document.addEventListener("click", function (event) {
 
 document.getElementById("markDone").addEventListener("click", function () {
     if (window.clickedTodo) {
+        window.clickedTodo.classList.remove("in-progress", "not-started");
         window.clickedTodo.classList.add("completed");
-        window.clickedTodo.querySelector(".status-box").innerText = "done";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "const(--green-darker)"; // Change to green
-        window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
+        const statusBox = window.clickedTodo.querySelector(".status-box");
+        statusBox.innerText = "Done";
+        statusBox.classList.remove("bg-yellow-300", "bg-red-500", "text-black");
+        statusBox.classList.add("bg-green-500", "text-white");
     }
 });
 
 document.getElementById("markInProgress").addEventListener("click", function () {
     if (window.clickedTodo) {
         window.clickedTodo.classList.remove("completed", "not-started");
-        window.clickedTodo.querySelector(".status-box").innerText = "In Progress";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "const(--yellow-lighter)"; // Change to light yellow
-        window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
+        window.clickedTodo.classList.add("in-progress");
+        const statusBox = window.clickedTodo.querySelector(".status-box");
+        statusBox.innerText = "In Progress";
+        statusBox.classList.remove("bg-green-500", "bg-red-500", "text-white");
+        statusBox.classList.add("bg-yellow-300", "text-black");
     }
 });
 
 document.getElementById("markNotStarted").addEventListener("click", function () {
     if (window.clickedTodo) {
         window.clickedTodo.classList.remove("completed", "in-progress");
-        window.clickedTodo.querySelector(".status-box").innerText = "Not Started";
-        window.clickedTodo.querySelector(".status-box").style.backgroundColor = "const(--red-lighter)"; // Change to light gray
-        window.clickedTodo.querySelector(".status-box").style.color = "white"; // Text color
+        window.clickedTodo.classList.add("not-started");
+        const statusBox = window.clickedTodo.querySelector(".status-box");
+        statusBox.innerText = "Not Started";
+        statusBox.classList.remove("bg-green-500", "bg-yellow-300", "text-white");
+        statusBox.classList.add("bg-red-500", "text-white");
     }
 });
+
+
 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Shift') {

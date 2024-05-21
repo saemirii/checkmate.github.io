@@ -217,6 +217,10 @@ body {
   @apply w-48 px-4 py-2 rounded border border-[1px] border-[var(--border-color-light)] text-base mb-5;
 }
 
+.login-container {
+    @apply flex justify-center items-center h-screen;
+  }
+
 /* #loginForm input[type="submit"] */
 #loginForm input[type="submit"] {
   @apply bg-[var(--font-color)] text-[var(--bg-color)] border-none px-4 py-2 text-base rounded cursor-pointer;
@@ -283,5 +287,26 @@ body {
   .input:checked + .slider + .emoji::after {
     content: "\1F31E"; /* Unicode character for sun emoji */
   }
+
+  .status-pill {
+    @apply px-2 py-1 rounded;
+  }
+  
+  .status-pill.completed {
+    @apply bg-green-200 text-white;
+  }
+  
+  .status-pill.not-started {
+    @apply bg-red-200 text-white;
+  }
+  
+  .status-pill.pending {
+    @apply bg-yellow-200 text-black;
+  }
+
+  .todo-input-container {
+    @apply border border-gray-300 p-4 mb-4 bg-gray-100;
+  }
+  
   
 }
