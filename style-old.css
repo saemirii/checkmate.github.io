@@ -158,7 +158,12 @@
     letter-spacing: 0.075em;
     background-color: var(--input-bg-color);
     transition: background-color 0.3s ease;
-}
+} 
+
+
+
+
+
 #todoInput {
     border-radius: 17px 0 0 17px;
     flex: 1;
@@ -246,6 +251,9 @@
     max-height: 200px;
 }
 
+/*STOPPED HERE*/
+
+
 label:has(#datePicker) {
     position: absolute;
     top: 50%;
@@ -262,6 +270,20 @@ label:has(#datePicker) {
     font-size: 14px;
     color: var(--status-box-text-color); /* Default text color (dark gray) */
 }
+
+label {
+    @apply absolute top-[50%] right-4px transform-translate-y-[-50%];
+  }
+  
+  /* Apply styles directly to the parent element of .status-box */
+  .parent-element {
+    @apply relative;
+  }
+  
+  /* .status-box styles */
+  .status-box {
+    @apply absolute top-10px right-10px px-5 py-10 bg-[var(--status-box-bg-color)] rounded-[17px] text-sm text-[var(--status-box-text-color)];
+  }
 
 /* Not Started */
 .not-started .status-box {
@@ -289,6 +311,8 @@ label:has(#datePicker) {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
+
+/*STOPPED HERE!!!*/
 
 .context-menu ul {
     list-style-type: none;
@@ -369,6 +393,7 @@ label:has(#datePicker) {
     margin-bottom: 10px;
 }
 
+/*STOPPED HERE*/
 #loginForm input[type="text"],
 #loginForm input[type="password"] {
     width: 200px;
@@ -466,7 +491,7 @@ label:has(#datePicker) {
 
 .inverted {
     color: var(--bg-color);
-}
+} /*left off*/
 
 /*.switch-container {*/
 /*    position: fixed;*/
