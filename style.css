@@ -242,7 +242,8 @@ body {
     }
 
     #datePicker {
-        @apply mx-[8px] px-2 py-1 text-base rounded-[15px] text-inherit border-none bg-white shadow;
+        @apply mx-[8px] px-2 py-1 text-base rounded-[15px] text-inherit border-none bg-white shadow
+        dark:bg-neutral-700;
     }
 
     #loginForm {
