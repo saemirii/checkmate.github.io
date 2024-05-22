@@ -18,20 +18,27 @@ body {
 }
 
 @keyframes strikeThrough {
-    0% { text-decoration-color: transparent; }
-    100% { text-decoration-color: black; }
+    0% {
+        text-decoration-color: transparent;
+    }
+    100% {
+        text-decoration-color: black;
+    }
 }
 
 @layer base {
     body {
-        @apply bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200
+        @apply bg-white text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200
     }
+
     p {
         @apply italic
     }
+
     section {
         @apply p-[20px] rounded shadow flex-1 m-[10px] max-w-[300px]
     }
+
     form div,
     form input,
     form button {
@@ -44,269 +51,310 @@ body {
         @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0
         bg-neutral-300 dark:bg-neutral-700 transition-all rounded-full
     }
+
     .slider:before {
         content: "";
         @apply absolute bg-neutral-100 dark:bg-neutral-500 transition-all rounded-full
         h-[20px] w-[20px] left-[2px] bottom-[2px]
     }
+
     input:checked + .slider:before {
         @apply transform translate-x-[26px]
     }
+
     .emoji {
         @apply absolute top-[2px] right-[5px] text-[18px] mr-[50px]
         mb-[10px]
     }
+
     .btn {
         @apply bg-neutral-900 text-white px-8 py-2 rounded dark:bg-neutral-100 dark:text-black
     }
+
     .container {
         @apply flex justify-around w-full max-w-[1200px] mt-[20px]
     }
+
     .home-title {
         @apply text-[75px] text-center text-gray-800 absolute top-[40%] left-1/2
-        opacity-50 transition-opacity duration-1000 ease-in transform
+        opacity-50 transition-opacity duration-300 ease-in transform dark:text-neutral-100
         translate-x-[-50%] translate-y-[-50%] hover:opacity-100 hover:line-through
     }
+
     .home-title .fade-in {
-        @apply opacity-100 /* <--- not sure we need this */
+        @apply opacity-100
+        /* <--- not sure we need this */
     }
+
     .home-title .strike-through {
         animation: strikeThrough 2s forwards;
         @apply line-through
     }
+
     .home-subtext {
         font-family: "Roboto", sans-serif;
-        @apply text-gray-500 absolute top-[53%] left-1/2 text-center text-[20px]
+        @apply text-neutral-500 absolute top-[53%] left-1/2 text-center text-[20px]
         tracking-[0.075rem] transform translate-x-[-50%] translate-y-[-50%]
     }
-    .trash-icon{
+
+    .trash-icon {
         margin-right: 10px;
         cursor: pointer;
     }
+
     .fade-out {
         @apply opacity-0 transition-opacity duration-500 ease-in
     }
 
     .expandLabel {
-        @apply mr-6 ml-auto cursor-pointer;
-      }
-      
-      .expandContent {
-        @apply overflow-hidden ease-in-out;
-      }
-      
-      .expanded {
+        @apply mr-[6px] ml-auto cursor-pointer;
+    }
+
+    .expandLabel input[type=checkbox] {
+        @apply absolute hidden
+    }
+
+    .expandContent {
+        @apply max-h-0 overflow-hidden transition-all duration-300 ease-in-out;
+    }
+
+    .expanded {
         @apply max-h-[200px];
-      }
+    }
 
-/* Not Started */
-.not-started .status-box {
-    @apply bg-[var(--green-darker)] text-[var(--bg-color)];
-  }
-  
-  /* In Progress */
-  .in-progress .status-box {
-    @apply bg-[var(--yellow-lighter)] text-[var(--status-box-text-color)];
-  }
-  
-  /* Completed */
-  .completed .status-box {
-    @apply bg-[var(--red-lighter)] text-[var(--bg-color)];
-  }
-  
-  /* .context-menu styles */
-  .context-menu {
-    @apply hidden absolute bg-[var(--bg-color)] border border-[var(--border-color-light)] shadow-md z-10;
-  }
+    .status-box {
+        @apply absolute top-[7px] right-[10px] px-[10px] py-[5px] rounded-lg bg-neutral-100
+    }
 
-  .context-menu ul li:hover {
-    @apply bg-[var(--green-lighter)];
-  }
-  
-  /* .div style */
-  /* Note: Since Tailwind CSS applies styles directly to HTML elements, 
-     there's no need for @font-face in this context */
-  .div {
-    font-family: "Roboto", sans-serif;
-  }
+    /* Not Started */
+    .not-started .status-box {
+        @apply bg-emerald-300 text-black;
+    }
 
-  .fade-out {
-    @apply opacity-0 transition-opacity duration-500 ease-out;
-  }
-  /* .emoji-button style */
-  .emoji-button {
-    @apply text-[16.8px] text-inherit mr-5 ml-[8px] mt-5 cursor-pointer block mb-[5px] no-underline;
-  }
-  
+    /* In Progress */
+    .in-progress .status-box {
+        @apply bg-amber-300;
+    }
+
+    /* Completed */
+    .completed .status-box {
+        @apply bg-rose-300 text-black;
+    }
+
+    /* .context-menu styles */
+    .context-menu {
+        @apply hidden absolute bg-white border
+        border-neutral-200 shadow-md z-10;
+    }
+
+    .context-menu ul li {
+        @apply py-[8px] px-[12px] cursor-pointer hover:bg-green-100
+    }
+
+    .fade-out {
+        @apply opacity-0 transition-opacity duration-500 ease-out;
+    }
+
+    /* .emoji-button style */
+    .emoji-button {
+        @apply text-[16.8px] text-inherit mr-5 ml-[8px] mt-5 cursor-pointer block mb-[5px] no-underline;
+    }
+
 
     #checkInButton {
         font-family: "Roboto", sans-serif;
         @apply absolute bottom-[32%] left-1/2 transform -translate-x-1/2
         tracking-[0.075rem] text-[17px] px-[20px] py-[10px] rounded
     }
+
     #tasks li {
         @apply mb-[5px]
     }
+
     #tasks li span {
         @apply inline-block w-full p-[5px] rounded bg-neutral-200 shadow
         dark:bg-neutral-800 z-10
     }
+
     #tasks li span:before {
         content: attr(data-status);
         @apply mr-[10px]
     }
+
     #start-time {
         @apply bg-neutral-200
     }
+
     #main-menu {
         @apply bg-rose-200
     }
+
     #generate-quiz {
         @apply bg-amber-200
     }
+
     #todoTitle {
         font-family: "Kollektif", sans-serif;
         @apply text-center mt-5 text-4xl;
         /* Other custom styles */
-      }
-      #todo-input-container {
-        @apply flex justify-center mb-10 p-1;
-      }
-      #todo-input-wrapper {
-        font-family: "Roboto", sans-serif;
-        @apply flex relative justify-between items-center w-[450px] h-[52px] border-[3px] border-[var(--border-color-dark)] rounded-[17px] tracking-[0.075em] bg-[var(--input-bg-color)] transition duration-300 ease-in-out;
     }
-    #todoInput {
-        @apply rounded-l-[17px] flex-1 py-[10px] px-[20px];
-      }
-      #todoInput, #todoDueDate {
-        @apply text-inherit border-none outline-none bg-transparent;
-      }
 
-      #todo-input-wrapper:hover {
-        @apply bg-[var(--input-hover-bg-color)];
-      }
+    #todo-input-container {
+        @apply flex justify-center mb-10 p-1;
+    }
 
-      #todo-input-wrapper:focus-within {
-        @apply bg-[var(--input-focus-bg-color)];
-      }
-
-      #todoDueDate {
-        @apply m-6 border-[3px] border-[var(--border-color-dark)] rounded-[12px] cursor-pointer p-10;
-      }
-      
-      #todo-list {
-        @apply m-0 p-0 max-w-[450px];
-      }  
-
-      #todo-list-item {
+    #todo-input-wrapper {
         font-family: "Roboto", sans-serif;
-        @apply list-none mb-5 bg-[var(--todo-li-bg-color)] p-10 rounded-[17px] border-[3px] border-[var(--border-color-dark)] transition duration-300 ease-in-out text-[16.8px] tracking-[0.075em] relative;
-      }
-      
-      #completed {
+        @apply flex relative justify-between items-center w-[450px] h-[52px] border-[3px]
+        border-black bg-white dark:bg-neutral-800 dark:border-neutral-600 rounded-[17px] tracking-[0.075em]
+        transition duration-300 ease-in-out hover:bg-neutral-100 dark:hover:bg-neutral-700
+    }
+
+    #todo-input-wrapper:has(#todoInput:focus) {
+        @apply bg-neutral-200 dark:bg-neutral-600
+    }
+
+    #todoInput {
+        @apply bg-transparent rounded-l-[17px] flex-1 py-[10px] px-[20px] outline-0
+    }
+
+    #todoDueDate {
+        @apply border-[3px] border-black bg-white dark:bg-neutral-700 rounded-[12px] cursor-pointer px-2 py-1 mx-[5px]
+        dark:border-neutral-800
+    }
+
+    #todo-list {
+        @apply mx-auto p-0 max-w-[450px];
+    }
+
+    #todo-list li {
+        font-family: "Roboto", sans-serif;
+        @apply list-none mb-5 bg-white dark:bg-neutral-800 p-3 rounded-[17px] border-[3px]
+        border-black dark:border-neutral-600 transition duration-300 ease-in-out text-[16.8px]
+        tracking-[0.075em] relative;
+    }
+    #todo-list li.completed {
+        @apply line-through bg-emerald-50
+    }
+
+    #completed {
         @apply line-through bg-[var(--green-lighter)];
-      }
-      
-      #datePicker {
-        @apply p-[0.8rem] text-base rounded-[15px] text-inherit border-none bg-[var(--input-bg-color)];
-      }
+    }
 
-      #loginForm input[type="text"],
-#loginForm input[type="password"] {
-  @apply w-48 px-4 py-2 rounded border border-[1px] border-[var(--border-color-light)] text-base mb-5;
+    #datePicker {
+        @apply mx-[8px] px-2 py-1 text-base rounded-[15px] text-inherit border-none bg-white shadow
+        dark:bg-neutral-700;
+    }
+
+    #loginForm {
+        @apply mt-[20px]
+    }
+    #loginForm input[type="text"],
+    #loginForm input[type="password"] {
+        @apply w-48 px-4 py-2 rounded border-[1px] border-neutral-300 text-base mb-5;
+    }
+
+    #loginContainer {
+        @apply absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+    }
+
+    #loginForm label {
+    @apply block mb-[10px]
 }
 
-.login-container {
-    @apply flex justify-center items-center h-screen;
-  }
+    #loginForm input[type="submit"] {
+        @apply bg-black text-white dark:bg-white dark:text-black border-none px-4 py-2 text-base rounded cursor-pointer;
+    }
 
-/* #loginForm input[type="submit"] */
-#loginForm input[type="submit"] {
-  @apply bg-[var(--font-color)] text-[var(--bg-color)] border-none px-4 py-2 text-base rounded cursor-pointer;
-}
+    #reminder-container {
+        @apply fixed top-0 right-0 w-[250px] bg-white h-full overflow-y-auto z-10 transform
+        translate-x-[100%] transition-transform duration-300 ease-in-out opacity-0 border-[1px]
+        border-neutral-200 rounded-[10px] outline-[2px] outline-black dark:bg-neutral-800 dark:border-neutral-600;
+    }
 
-#reminder-container {
-    @apply fixed top-0 right-0 w-[250px] bg-[var(--bg-color)] h-full overflow-y-auto z-10 transform translate-x-[100%] transition-transform duration-300 ease-in-out opacity-0 border-[1px] border-[var(--border-color-light)] rounded-[10px] outline-[2px] outline-[var(--font-color)];
-  }
+    #reminder-container.visible {
+        @apply transform translate-x-0 opacity-100;
+    }
 
-  #reminder-container.visible {
-    @apply transform translate-x-0 opacity-100;
-  }
+    .reminder-header {
+        @apply px-10 py-10 border-b-[1px] border-neutral-200 dark:border-neutral-600
+        flex justify-between items-center rounded-tl-[10px] rounded-tr-[10px];
+    }
 
-  .reminder-header {
-    @apply bg-[var(--bg-color)] px-10 py-10 border-b-[1px] border-[var(--border-color-light)] flex justify-between items-center rounded-tl-[10px] rounded-tr-[10px];
-  }
-  
-  /* .reminder-settings */
-  .reminder-settings {
-    @apply px-10 py-10 border-b-[1px] border-[var(--border-color-light)];
-  }
+    /* .reminder-settings */
+    .reminder-settings {
+        @apply p-[10px] border-b-[1px] border-neutral-300 dark:border-neutral-600;
+    }
 
-  /* .symbol */
-.symbol {
-    @apply inline-block w-12 h-12 rounded-full mr-5;
-  }
-  
-  /* .red */
-  .red {
-    @apply bg-[var(--red-darker)];
-  }
-  
-  /* .yellow */
-  .yellow {
-    @apply bg-[var(--yellow-darker)];
-  }
-  
-  /* .green */
-  .green {
-    @apply bg-[var(--green-darkest)];
-  }
-  .reminder-list {
-    @apply px-10 py-10;
-  }
-  
-  /* .reminder-item */
-  .reminder-item {
-    @apply flex justify-between items-center py-10 border-b-[1px] border-[var(--border-color-light)];
-  }
+    /* .symbol */
+    .symbol {
+        @apply inline-block w-[12px] h-[12px] rounded-full mr-[5px];
+    }
 
-  .trash {
-    @apply bg-transparent border-none cursor-pointer text-[var(--trash-color)] text-base ml-10;
-  }
-  
-  /* .inverted */
-  .inverted {
-    @apply text-[var(--bg-color)];
-  }
+    /* .red */
+    .red {
+        @apply bg-rose-400;
+    }
 
-  .input:checked + .slider {
-    @apply bg-[var(--input-checked)];
-  }
+    /* .yellow */
+    .yellow {
+        @apply bg-amber-400;
+    }
 
-  .input:checked + .slider + .emoji::after {
-    content: "\1F31E"; /* Unicode character for sun emoji */
-  }
+    /* .green */
+    .green {
+        @apply bg-green-400;
+    }
 
-  .status-pill {
-    @apply px-2 py-1 rounded;
-  }
-  
-  .status-pill.completed {
-    @apply bg-green-200 text-white;
-  }
-  
-  .status-pill.not-started {
-    @apply bg-red-200 text-white;
-  }
-  
-  .status-pill.pending {
-    @apply bg-yellow-200 text-black;
-  }
+    .reminder-list {
+        @apply p-[10px];
+    }
 
-  .todo-input-container {
-    @apply border border-gray-300 p-4 mb-4 bg-gray-100;
-  }
-  
-  
+    /* .reminder-item */
+    .reminder-item {
+        @apply flex justify-between items-center py-[10xpx] border-b-[1px] border-neutral-200 dark:border-neutral-600;
+    }
+
+    .trash {
+        @apply bg-transparent border-none cursor-pointer text-neutral-500 text-base ml-10;
+    }
+
+    /* .inverted */
+    .inverted {
+        @apply text-[var(--bg-color)];
+    }
+
+    .input:checked + .slider {
+        @apply bg-[var(--input-checked)];
+    }
+
+    .input:checked + .slider + .emoji::after {
+        content: "\1F31E"; /* Unicode character for sun emoji */
+    }
+
+    .status-pill {
+        @apply px-2 py-1 rounded;
+    }
+
+    .status-pill.completed {
+        @apply bg-green-200 text-white;
+    }
+
+    .status-pill.not-started {
+        @apply bg-red-200 text-white;
+    }
+
+    .status-pill.pending {
+        @apply bg-yellow-200 text-black;
+    }
+
+    .todo-input-container {
+        @apply border border-gray-300 p-4 mb-4 bg-gray-100;
+    }
+
+
+    .input:checked + .slider + .emoji::after {
+        content: "\1F31E"; /* Unicode character for sun emoji */
+    }
+
 }
