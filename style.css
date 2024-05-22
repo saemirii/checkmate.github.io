@@ -162,6 +162,9 @@ body {
         @apply text-[16.8px] text-inherit mr-5 ml-[8px] mt-5 cursor-pointer block mb-[5px] no-underline;
     }
 
+    .parent-emoji-button {
+        @apply flex flex-col 
+    }
 
     #checkInButton {
         font-family: "Roboto", sans-serif;
