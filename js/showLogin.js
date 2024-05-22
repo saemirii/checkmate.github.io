@@ -1,6 +1,6 @@
 const checkInBtn = document.getElementById('checkInButton')
 
-//checkInBtn.addEventListener('click', showLogin)
+//checkInBtn.addEventListener('click', showLogin) comment out
 
 function showLogin() {
   const homeMenu = document.getElementById("homeMenu");
