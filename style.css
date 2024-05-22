@@ -76,9 +76,9 @@ body {
     }
 
     .home-title {
-        @apply text-[75px] text-center text-gray-800 absolute top-[40%] left-1/2
+        @apply text-[75px] text-center text-[#000000] absolute top-[40%] left-1/2
         opacity-50 transition-opacity duration-300 ease-in transform dark:text-neutral-100
-        translate-x-[-50%] translate-y-[-50%] hover:opacity-100 hover:line-through
+        translate-x-[-50%] translate-y-[-50%] hover:opacity-100 hover:line-through 
     }
 
     .home-title .fade-in {
@@ -196,7 +196,7 @@ body {
 
     #todoTitle {
         font-family: "Kollektif", sans-serif;
-        @apply text-center mt-10 mb-10 text-5xl mt-2.5;
+        @apply text-center mt-10 mb-10 text-5xl mt-2.5 text-[#000000];
         /* Other custom styles */
     }
 
