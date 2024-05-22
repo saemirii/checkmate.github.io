@@ -1,5 +1,5 @@
 import "./style.css"
-import "./js/showLogin.js"
+//import "./js/showLogin.js"
 import "./js/addTodo.js"
 
 // Show the main content of the page
@@ -9,10 +9,10 @@ document.addEventListener("keydown", function (event) {
         const todoTitle = document.getElementById("todoTitle");
         const todoInputContainer = document.getElementById("todo-input-container");
         const todoList = document.getElementById("todo-list");
-        const checkInButton = document.getElementById("checkInButton");
+        //const checkInButton = document.getElementById("checkInButton");
 
         homeMenu.classList.add("fade-out");
-        checkInButton.style.display = "none";
+        //checkInButton.style.display = "none";
         setTimeout(function () {
             homeMenu.style.display = "none";
             todoTitle.style.display = "block";

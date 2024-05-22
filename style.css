@@ -76,7 +76,7 @@ body {
     }
 
     .home-title {
-        @apply text-[75px] text-center text-[#000000] absolute top-[40%] left-1/2
+        @apply text-[85px] text-center text-[#000000] absolute top-[45%] left-1/2
         opacity-50 transition-opacity duration-300 ease-in transform dark:text-neutral-100
         translate-x-[-50%] translate-y-[-50%] hover:opacity-100 hover:line-through 
     }
@@ -93,7 +93,8 @@ body {
 
     .home-subtext {
         font-family: "Roboto", sans-serif;
-        @apply text-neutral-500 absolute top-[49%] left-1/2 text-center text-[20px]
+        font-style: normal;
+        @apply text-[#000000] absolute top-[55%] left-1/2 text-center text-[22.5px]
         tracking-[0.075rem] transform translate-x-[-50%] translate-y-[-50%]
     }
 
