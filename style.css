@@ -93,7 +93,7 @@ body {
 
     .home-subtext {
         font-family: "Roboto", sans-serif;
-        @apply text-neutral-500 absolute top-[53%] left-1/2 text-center text-[20px]
+        @apply text-neutral-500 absolute top-[49%] left-1/2 text-center text-[20px]
         tracking-[0.075rem] transform translate-x-[-50%] translate-y-[-50%]
     }
 
@@ -128,17 +128,18 @@ body {
 
     /* Not Started */
     .not-started .status-box {
-        @apply bg-emerald-300 text-black;
+        @apply text-[#FF9494] rounded-full
+        text-black;
     }
 
     /* In Progress */
     .in-progress .status-box {
-        @apply bg-amber-300;
+        @apply text-[#FFD073] text-black rounded-full;
     }
 
     /* Completed */
     .completed .status-box {
-        @apply bg-rose-300 text-black;
+        @apply text-[#ACDD8F] text-black rounded-full;
     }
 
     /* .context-menu styles */
@@ -163,7 +164,7 @@ body {
 
     #checkInButton {
         font-family: "Roboto", sans-serif;
-        @apply absolute bottom-[32%] left-1/2 transform -translate-x-1/2
+        @apply absolute bottom-[39%] left-1/2 transform -translate-x-1/2
         tracking-[0.075rem] text-[17px] px-[20px] py-[10px] rounded
     }
 
@@ -195,12 +196,12 @@ body {
 
     #todoTitle {
         font-family: "Kollektif", sans-serif;
-        @apply text-center mt-5 text-4xl;
+        @apply text-center mt-10 mb-10 text-5xl;
         /* Other custom styles */
     }
 
     #todo-input-container {
-        @apply flex justify-center mb-10 p-1;
+        @apply flex justify-center mb-2 p-1;
     }
 
     #todo-input-wrapper {
@@ -219,7 +220,7 @@ body {
     }
 
     #todoDueDate {
-        @apply border-[3px] border-black bg-white dark:bg-neutral-700 rounded-[12px] cursor-pointer px-2 py-1 mx-[5px]
+        @apply  bg-gray-200 dark:bg-neutral-700 rounded-[12px] cursor-pointer px-2 py-1 mx-[5px]
         dark:border-neutral-800
     }
 
@@ -229,12 +230,12 @@ body {
 
     #todo-list li {
         font-family: "Roboto", sans-serif;
-        @apply list-none mb-5 bg-white dark:bg-neutral-800 p-3 rounded-[17px] border-[3px]
+        @apply list-none mb-2 bg-white dark:bg-neutral-800 p-3 rounded-[17px] border-[3px]
         border-black dark:border-neutral-600 transition duration-300 ease-in-out text-[16.8px]
         tracking-[0.075em] relative;
     }
     #todo-list li.completed {
-        @apply line-through bg-emerald-50
+        @apply line-through bg-gray-200
     }
 
     #completed {
@@ -333,7 +334,7 @@ body {
     }
 
     .status-pill {
-        @apply px-2 py-1 rounded;
+        @apply px-2 py-1 rounded-[23px];
     }
 
     .status-pill.completed {

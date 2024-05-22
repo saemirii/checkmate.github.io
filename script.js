@@ -38,8 +38,8 @@ document.getElementById("markDone").addEventListener("click", function () {
         window.clickedTodo.classList.add("completed");
         const statusBox = window.clickedTodo.querySelector(".status-box");
         statusBox.innerText = "Done";
-        statusBox.classList.remove("bg-yellow-300", "bg-red-500", "text-black");
-        statusBox.classList.add("bg-green-500", "text-white");
+        statusBox.classList.remove("bg-[#FFD073]", "bg-[#FF9494]", "text-black");
+        statusBox.classList.add("bg-[#ACDD8F]", "text-black", "rounded-full");
     }
 });
 
@@ -49,8 +49,8 @@ document.getElementById("markInProgress").addEventListener("click", function () 
         window.clickedTodo.classList.add("in-progress");
         const statusBox = window.clickedTodo.querySelector(".status-box");
         statusBox.innerText = "In Progress";
-        statusBox.classList.remove("bg-green-500", "bg-red-500", "text-white");
-        statusBox.classList.add("bg-yellow-300", "text-black");
+        statusBox.classList.remove("bg-[#ACDD8F]", "bg-[#FF9494]", "text-black");
+        statusBox.classList.add("bg-[#FFD073]", "text-black", "rounded-full");
     }
 });
 
@@ -60,10 +60,11 @@ document.getElementById("markNotStarted").addEventListener("click", function () 
         window.clickedTodo.classList.add("not-started");
         const statusBox = window.clickedTodo.querySelector(".status-box");
         statusBox.innerText = "Not Started";
-        statusBox.classList.remove("bg-green-500", "bg-yellow-300", "text-white");
-        statusBox.classList.add("bg-red-500", "text-white");
+        statusBox.classList.remove("bg-[#ACDD8F]", "bg-[#FFD073]", "text-black");
+        statusBox.classList.add("bg-red-200", "text-black", "rounded-full");
     }
 });
+
 
 
 
