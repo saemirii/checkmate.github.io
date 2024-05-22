@@ -196,7 +196,7 @@ body {
 
     #todoTitle {
         font-family: "Kollektif", sans-serif;
-        @apply text-center mt-10 mb-10 text-5xl;
+        @apply text-center mt-10 mb-10 text-5xl mt-2.5;
         /* Other custom styles */
     }
 
