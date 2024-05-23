@@ -29,4 +29,4 @@ This passion project of mine is currently a work in progress! Started on March 3
 3. Fix current bugs (view issues tab)
 
 ## Tools of the Trade
-Hosted on Vercel, Checkmate has implemented the Tailwind framework to help with mobile styling and code efficiency. Moreover, the website will soon use nextJS and mongoDB as a temporary database to save data and logins. 
+Hosted on Vercel, Checkmate has implemented the Tailwind framework to help with mobile styling and code efficiency. Moreover, the website will soon use nextJS and mongoDB as a database to save data and logins! 
