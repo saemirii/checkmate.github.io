@@ -61,7 +61,7 @@ document.getElementById("markNotStarted").addEventListener("click", function () 
         const statusBox = window.clickedTodo.querySelector(".status-box");
         statusBox.innerText = "Not Started";
         statusBox.classList.remove("bg-[#ACDD8F]", "bg-[#FFD073]", "text-black");
-        statusBox.classList.add("bg-red-200", "text-black", "rounded-full");
+        statusBox.classList.add("bg-[#FF9494]", "text-black", "rounded-full");
     }
 });
 
