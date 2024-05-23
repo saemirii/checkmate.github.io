@@ -65,9 +65,6 @@ document.getElementById("markNotStarted").addEventListener("click", function () 
     }
 });
 
-//test
-
-
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Shift') {
         const reminderContainer = document.getElementById('reminder-container');
