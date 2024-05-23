@@ -203,7 +203,7 @@ body {
 
     #todoTitle {
         font-family: "Kollektif", sans-serif;
-        @apply text-center mt-8 mb-10 text-5xl mt-2.5 text-[#000000];
+        @apply text-center mb-10 text-5xl -mt-8 text-[#000000];
         /* Other custom styles */
     }
 
