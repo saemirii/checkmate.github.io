@@ -99,8 +99,7 @@ body {
     }
     
     .checkbox-icon {
-        @apply w-10 h-10;
-    }
+        @apply w-[22.5px] h-[22.5px];    }
 
     .trash-icon {
         margin-right: 10px;
