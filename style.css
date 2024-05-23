@@ -95,7 +95,11 @@ body {
         font-family: "Roboto", sans-serif;
         font-style: normal;
         @apply text-[#000000] absolute top-[55%] left-1/2 text-center text-[22.5px]
-        tracking-[0.075rem] transform translate-x-[-50%] translate-y-[-50%]
+        tracking-[0.075rem] transform translate-x-[-50%] translate-y-[-50%] flex items-center space-x-2;
+    }
+    
+    .checkbox-icon {
+        @apply w-10 h-10;
     }
 
     .trash-icon {
@@ -200,7 +204,7 @@ body {
 
     #todoTitle {
         font-family: "Kollektif", sans-serif;
-        @apply text-center mt-10 mb-10 text-5xl mt-2.5 text-[#000000];
+        @apply text-center mt-8 mb-10 text-5xl mt-2.5 text-[#000000];
         /* Other custom styles */
     }
 
