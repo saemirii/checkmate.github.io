@@ -163,7 +163,7 @@ body {
     }
 
     .parent-emoji-button {
-        @apply flex flex-col 
+        @apply inline-flex flex-col 
     }
 
     #checkInButton {
