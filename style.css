@@ -36,7 +36,7 @@ body {
     }
 
     section {
-        @apply p-[20px] rounded shadow flex-1 m-[10px] max-w-[300px]
+        @apply p-[20px] rounded flex-1 m-[10px] max-w-[300px]
     }
 
     form div,
