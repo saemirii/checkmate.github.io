@@ -6,10 +6,9 @@ import { Request } from "express";
 export class AuthGuard implements CanActivate {
     constructor(private jwtService: JwtService) {}
     
-    async canActivate (context: ExecutionContext) {
-        console.log('dfdf')
+    async canActivate (context: ExecutionContext): Promise<boolean> {
         const request = context.switchToHttp().getRequest();
-        const token =  this.extractToekenFromHeader(request);
+        const token = this.extractTokenFromHeader(request);
         if(!token){
             throw new UnauthorizedException();
         }
@@ -17,7 +16,7 @@ export class AuthGuard implements CanActivate {
             const payload = await this.jwtService.verifyAsync(
                 token,
                 {
-                  secret: "8F2A5E7B3CDE9AF1854D670BA3F1C2E0za   "
+                  secret: process.env.JWT_SECRET
                 }
               );
               request['user'] = payload;
@@ -28,8 +27,14 @@ export class AuthGuard implements CanActivate {
         return true;
     }
 
-    private extractToekenFromHeader(request: Request): string | undefined {
-        const [type, token] = request.headers.authorization?.split(' ') ?? [];
-        return type === 'Bearer' ? token: undefined;
+    private extractTokenFromHeader(request: Request): string | undefined {
+        const authHeader = request.headers.authorization;
+        if (authHeader && typeof authHeader === 'string') {
+            const [type, token] = authHeader.split(' ');
+            if (type === 'Bearer' && token) {
+                return token;
+            }
+        }
+        return undefined;
     }
 }
