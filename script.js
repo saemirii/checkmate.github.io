@@ -119,53 +119,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 
-document.getElementById('add-task').addEventListener('click', () => {
-    const taskInput = document.getElementById('new-task');
-    const taskText = taskInput.value.trim();
-    if (taskText !== '') {
-        const newTask = document.createElement('li');
-        newTask.innerHTML = `<span>⬜ ${taskText}</span>`;
-        document.getElementById('tasks').appendChild(newTask);
-        taskInput.value = '';
-    }
-});
-
-document.getElementById('generate-quiz').addEventListener('click', () => {
-    const notes = document.getElementById('notes').value.trim();
-    if (notes) {
-        alert('Quiz generation feature coming soon!');
-        // Here you could implement the functionality to generate quiz from notes
-    }
-});
-
-document.getElementById('start-timer').addEventListener('click', () => {
-    let focusTime;
-    const customHours = document.getElementById('custom-hours').value;
-    if (customHours) {
-        focusTime = customHours * 60;
-    } else {
-        const selectedTime = document.querySelector('input[name="focus-time"]:checked');
-        if (selectedTime) {
-            focusTime = selectedTime.value;
-        } else {
-            alert('Please select or enter a focus time.');
-            return;
-        }
-    }
-    const reason = document.getElementById('reason').value;
-    alert(`Starting a timer for ${focusTime} minutes.\nReason: ${reason}`);
-    // Here you could implement the timer functionality
-});
-
 document.addEventListener('DOMContentLoaded', function() {
-    const studySessionButton = document.getElementById('study-session');
     const emojiButtons = document.querySelectorAll('.emoji-button');
+    const studySessionButton = document.getElementById('study-session');
     const studySessionContainer = document.getElementById('study-session-container');
+    const dynamicParagraph = document.getElementById('dynamicParagraph');
 
     studySessionButton.addEventListener('click', function() {
-        console.log('Study session button clicked!');
-        // Show study session container and emoji buttons, hide other elements
-        showElementsExcept([studySessionContainer, document.body, document.documentElement, ...emojiButtons]);
+            dynamicParagraph.style.display = 'block';
+            studySessionContainer.style.display = 'block';
     });
 
     function showElementsExcept(visibleElements) {
@@ -179,4 +141,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    studySessionButton.addEventListener('click', function() {
+        console.log('Study session button clicked!');
+        // Show study session container and emoji buttons, hide other elements
+        showElementsExcept([studySessionContainer, document.body, document.documentElement]);
+    });
 });
