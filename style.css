@@ -94,7 +94,7 @@ body {
     .home-subtext {
         font-family: "Roboto", sans-serif;
         font-style: normal;
-        @apply text-[#000000] absolute top-[55%] left-1/2 text-center text-[22.5px]
+        @apply text-[#000000] dark:text-white absolute top-[55%] left-1/2 text-center text-[22.5px]
         tracking-[0.075rem] transform translate-x-[-50%] translate-y-[-50%] flex items-center space-x-2;
     }
     
@@ -214,7 +214,7 @@ body {
 
     #todoTitle {
         font-family: "Kollektif", sans-serif;
-        @apply text-center mb-10 text-5xl -mt-8 text-[#000000];
+        @apply text-center dark:text-white mb-10 text-5xl -mt-8 text-[#000000];
         /* Other custom styles */
     }
 
