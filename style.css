@@ -121,6 +121,9 @@ body {
     .expandContent {
         @apply max-h-0 overflow-hidden transition-all duration-300 ease-in-out;
     }
+    .expandContent p {
+        @apply mt-2
+    }
 
     .expanded {
         @apply max-h-[200px];
@@ -167,6 +170,14 @@ body {
 
     .parent-emoji-button {
         @apply inline-flex flex-col 
+    }
+    #timeParent {
+        @apply absolute w-full bg-neutral-50 transition-transform p-2 top-1/2 transform duration-500
+        -translate-y-1/2 right-0 flex gap-x-4 items-center shadow-lg
+    }
+
+    #confirmTimeBtn {
+        @apply ml-auto py-1 px-4 rounded-full bg-neutral-200 hover:bg-neutral-300
     }
 
     #checkInButton {
@@ -250,7 +261,7 @@ body {
     }
 
     #datePicker {
-        @apply mx-[8px] px-2 py-1 text-base rounded-[15px] text-inherit border-none bg-white shadow
+        @apply px-2 py-1 text-base rounded-[15px] text-inherit border-none bg-white shadow
         dark:bg-neutral-700;
     }
 

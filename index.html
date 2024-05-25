@@ -36,23 +36,27 @@
 </div>
 
 <section id="study-session-container" class="container hidden">
-  <section id="reminder-container">
     <p id="dynamicParagraph" style="display: none;">This is a new paragraph added dynamically via JavaScript.</p>
-  </section>
 </section>
 
 <!-- <button id="checkInButton" class="btn">check-in</button> -->
 
 <h2 id="todoTitle" style="display: none;">To-Do List</h2>
 <div id="todo-input-container" style="display: none;">
-  <div id="todo-input-wrapper">
+  <div id="todo-input-wrapper" class="overflow-hidden">
     <label>
       <input type="text" id="todoInput" placeholder="Enter your task" class="fadeIn">
     </label>
     <button id="todoDueDate">Set due date</button>
-    <label class="hidden">
-      <input type="date" id="datePicker">
-    </label>
+    <div id="timeParent" class="translate-x-full">
+      <label class="">
+        <input type="date" id="datePicker">
+      </label>
+      <label class="">
+        <input type="time" id="timePicker" class="p-1 shadow rounded-full">
+      </label>
+      <button id="confirmTimeBtn">Done</button>
+    </div>
   </div>
 </div>
 <ul id="todo-list" style="display: none;">

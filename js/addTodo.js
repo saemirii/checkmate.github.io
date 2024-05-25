@@ -1,5 +1,8 @@
+import {format} from 'date-fns'
+
 const todoInput = document.getElementById('todoInput')
 const setDueDateButton = document.getElementById('todoDueDate')
+const confirmTimeBtn = document.getElementById('confirmTimeBtn')
 
 
 todoInput.addEventListener('keydown', (e) => {
@@ -9,16 +12,20 @@ todoInput.addEventListener('keydown', (e) => {
 })
 
 setDueDateButton.addEventListener("click", showHideDatePicker)
+confirmTimeBtn.addEventListener('click', showHideDatePicker)
 
 
 function addTodo() {
   const inputField = document.getElementById("todoInput");
   const dateInput = document.getElementById('datePicker');
+  const timeInput = document.getElementById('timePicker');
+
 
   const inputValue = inputField.value;
   if (inputValue.trim() !== "") {
     const listItem = document.createElement("li");
-    listItem.dataset.dd = dateInput.value;
+    const selectedDueDate = new Date(`${dateInput.value}T${timeInput.value}`)
+    listItem.dataset.dd = `${selectedDueDate}`
 
     // Trash icon
     const trashIcon = document.createElement("span");
@@ -48,7 +55,8 @@ function addTodo() {
     listItem.appendChild(expandLabel);
 
     if (listItem.dataset.dd !== "") {
-      dueDateText.innerText = `This task is due on: ${listItem.dataset.dd}`;
+      const formattedDate = format(listItem.dataset.dd, 'Pp')
+      dueDateText.innerText = `This task is due on: ${formattedDate}`;
     } else {
       dueDateText.innerText = "This task has no due date";
     }
@@ -100,7 +108,6 @@ function addTodo() {
     document.getElementById("todo-list").appendChild(listItem);
 
     // Clear date picker and hide it if its visible
-    dateInput.parentElement.className = "hidden";
     setDueDateButton.className = "block"
     dateInput.value = "";
     // Clear input field
@@ -113,13 +120,11 @@ function addTodo() {
 
 
 function showHideDatePicker() {
-  const dateInput = document.getElementById('datePicker');
-  const dateInputParent = dateInput.parentElement;
-  if(dateInputParent.className === "hidden") {
-    setDueDateButton.className = "hidden"
-    dateInputParent.className = "block";
+  const timeParent = document.getElementById('timeParent')
+
+  if (timeParent.classList.contains('translate-x-full')) {
+    timeParent.classList.remove('translate-x-full')
   } else {
-    setDueDateButton.className = "block"
-    dateInputParent.className = "hidden";
+    timeParent.classList.add('translate-x-full')
   }
 }
