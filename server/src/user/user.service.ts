@@ -13,4 +13,7 @@ export class UserService {
   async findUserByEmail(email: string) {
     return this.prisma.user.findFirst({ where: { email } });
   }
+  async findUserById(id: string) {
+    return this.prisma.user.findFirst({ where: { id } });
+  }
 }

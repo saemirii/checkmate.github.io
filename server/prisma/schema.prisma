@@ -20,4 +20,34 @@ model User {
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  task Task[] 
+}
+
+enum TaskStatus {
+  IN_PROGRESS
+  DONE
+  PAUSE
+  NOT_STARTED
+}
+
+enum TaskPriority {
+  HIGH
+  MEDIUM 
+  LOW 
+}
+
+model Task {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  user User  @relation(fields: [createdBy], references: [id])
+  createdBy String @unique @db.ObjectId
+
+  title String
+  description String?
+  status TaskStatus
+  priority TaskPriority?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
