@@ -130,7 +130,7 @@ body {
     }
 
     .status-box {
-        @apply absolute top-[7px] right-[10px] px-[10px] py-[5px] rounded-lg bg-neutral-100
+        @apply absolute top-[7px] right-[10px] px-[10px] py-[5px] rounded-lg bg-neutral-100 dark:bg-neutral-700
     }
 
     /* Not Started */
@@ -152,11 +152,11 @@ body {
     /* .context-menu styles */
     .context-menu {
         @apply hidden absolute bg-white border
-        border-neutral-200 shadow-md z-10;
+        border-neutral-200 shadow-md z-10 dark:bg-neutral-900 dark:text-neutral-200
     }
 
     .context-menu ul li {
-        @apply py-[8px] px-[12px] cursor-pointer hover:bg-green-100
+        @apply py-[8px] px-[12px] cursor-pointer hover:bg-green-100 dark:hover:bg-green-800
     }
 
     .fade-out {
@@ -173,11 +173,16 @@ body {
     }
     #timeParent {
         @apply absolute w-full bg-neutral-50 transition-transform p-2 top-1/2 transform duration-500
-        -translate-y-1/2 right-0 flex gap-x-4 items-center shadow-lg
+        -translate-y-1/2 right-0 flex gap-x-4 items-center shadow-lg dark:bg-neutral-800
+    }
+
+    #timePicker {
+        @apply dark:bg-neutral-700
     }
 
     #confirmTimeBtn {
         @apply ml-auto py-1 px-4 rounded-full bg-neutral-200 hover:bg-neutral-300
+        dark:bg-neutral-700 dark:hover:bg-neutral-600
     }
 
     #checkInButton {
@@ -253,7 +258,7 @@ body {
         tracking-[0.075em] relative;
     }
     #todo-list li.completed {
-        @apply line-through bg-gray-200
+        @apply line-through bg-gray-200 dark:text-black
     }
 
     #completed {
