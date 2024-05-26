@@ -382,7 +382,8 @@ body {
     }
 
     #focus-mode-container {
-        @apply rounded-[22px] border-[4px]
+        margin-top: 5.25rem;
+        @apply rounded-[22px] border-[4px] ml-12
     }
     
     #focus-mode-container h2 {
