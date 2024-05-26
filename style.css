@@ -381,4 +381,28 @@ body {
         content: "\1F31E"; /* Unicode character for sun emoji */
     }
 
+    #focus-mode-container {
+        @apply rounded-[22px] border-[4px]
+    }
+    
+    #focus-mode-container h2 {
+        @apply text-black text-[36.4px];
+        text-align: center;
+        margin: 15px auto;
+    }
+
+    #focus-mode-container button {
+        font-family: "Roboto", sans-serif;
+        width: 228.5px;
+        @apply block mx-auto my-4 tracking-[0.075rem] text-[20px] rounded-full;
+    }
+
+    #study-session-title {
+        @apply text-[56.9px] text-black;
+        position: fixed;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
 }
