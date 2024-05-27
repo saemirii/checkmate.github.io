@@ -383,7 +383,7 @@ body {
 
     #focus-mode-container {
         margin-top: 5.25rem;
-        @apply rounded-[22px] border-[4px] ml-12
+        @apply rounded-[22px] border-[4px] ml-16
     }
     
     #focus-mode-container h2 {
@@ -404,6 +404,17 @@ body {
         top: 15%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+
+    #custom-hours {
+        @apply py-1 px-2 w-[200px] bg-[#E5E7EB] rounded-full my-2 mx-auto block border border-gray-300 p-2;
+      }
+      
+    #focus-reason {
+        @apply border px-1 py-2 rounded-lg text-black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
 }
