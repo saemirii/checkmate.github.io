@@ -407,11 +407,11 @@ body {
     }
 
     #custom-hours {
-        @apply py-1 px-2 w-[200px] bg-[#E5E7EB] rounded-full my-2 mx-auto block border border-gray-300 p-2;
-      }
+        @apply flex justify-center items-center;
+    }
       
     #focus-reason {
-        @apply border px-1 py-2 rounded-lg text-black;
+        @apply px-1 py-2 rounded-lg text-black;
         display: flex;
         justify-content: center;
         align-items: center;

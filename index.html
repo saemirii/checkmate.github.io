@@ -44,14 +44,15 @@
     <button type = "button" style = "background-color: #C4C4C4">10 minutes</button>
     <button type ="button" style = "background-color: #9D9D9D; color: white;">30 minutes</button>
     <button type = "button" style = "background-color: #747474; color: white;">60 minutes</button>
-    <div class="relative w-[200px] mx-auto my-2">
-      <input type="number" id="custom-hours" name="focus-time" min="1" max = "24" placeholder=" " class="w-full bg-[#E5E7EB] rounded-lg p-2 border border-gray-300 appearance-none">
-      <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none">hours</span>
+    <div class="w-[228.5px] p-1 border-2 border-black rounded-full flex mx-auto items-center">
+      <input id="custom-hours" type="number" min = "1" max = "24" class="border-b-2 ml-4 border-black  w-6">
+      <label for="custom-hours">hours</label>
     </div>
-    <div class="flex items-center space-x-2 mx-auto">
+    <div class="flex items-center mx-auto space-x-2 w-64 mt-5">
       <span class="text-black">reason:</span>
-      <input type="text" id="focus-reason" class=" text-black"></input>
+      <input type="text" id="focus-reason" class=" text-black border-black border-2"></input>
     </div>
+    <button type = "button" style = "background-color: #DAF0CD; color: black;">start timer!</button>
       </div>
 </section>
 <!-- <button id="checkInButton" class="btn">check-in</button> -->
