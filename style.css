@@ -398,6 +398,11 @@ body {
         @apply block mx-auto my-4 tracking-[0.075rem] text-[20px] rounded-full;
     }
 
+    #start-timer {
+        font-family: "Kollektif", sans-serif !important;
+        @apply bg-[#DAF0CD] 
+    }
+
     #study-session-title {
         @apply text-[56.9px] text-black;
         position: fixed;
@@ -417,4 +422,7 @@ body {
         align-items: center;
     }
 
+    #study-todo-container {
+        @apply rounded-[22px] border-[4px] ml-16
+    }
 }
