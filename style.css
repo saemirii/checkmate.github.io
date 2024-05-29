@@ -391,6 +391,18 @@ body {
         margin: 15px auto;
     }
 
+    #study-todo-container h2 {
+        @apply text-black text-[36.4px];
+        text-align: center;
+        margin: 15px auto;
+    }
+
+    #reviewer-container h2 {
+        @apply text-black text-[36.4px];
+        text-align: center;
+        margin: 15px auto;
+    }
+
     #focus-mode-container button {
         font-family: "Roboto", sans-serif;
         width: 228.5px;
