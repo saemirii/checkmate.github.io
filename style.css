@@ -404,11 +404,9 @@ body {
     }
 
     #study-session-title {
-        @apply text-[56.9px] text-black;
-        position: fixed;
+        @apply text-[56.9px] text-black mx-auto;
         top: 15%;
         left: 50%;
-        transform: translate(-50%, -50%);
     }
 
     #custom-hours {
@@ -423,6 +421,16 @@ body {
     }
 
     #study-todo-container {
-        @apply rounded-[22px] border-[4px] ml-16
+        margin-top: 5.25rem;
+        @apply rounded-[22px] border-[4px] ml-16 
+    }
+
+    #reviewer-container {
+        margin-top: 5.25rem;
+        @apply rounded-[22px] border-[4px] ml-16 
+    }
+
+    #main-container {
+        @apply flex flex-col;
     }
 }
