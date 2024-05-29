@@ -443,6 +443,11 @@ body {
         @apply flex flex-col;
     }
 
-    #container-wrapped {
+    #container-wrapper > div {
+        margin-right: 50px;
+    }
+    
+    #container-wrapper > div:last-child {
+        margin-right: 0; 
     }
 }

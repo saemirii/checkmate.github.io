@@ -36,31 +36,36 @@
 </div>
 
 <section id="study-session-container" class="container hidden mx-auto">
-  <div id = "main-container" class = "flex">
-  <h1 id = "study-session-title">study session</h1>
-  <p id="dynamicParagraph" style="display: none;">example text</p>
-  <div class = "flex justify-between" id = "container-wrapper">
-  <div id = "focus-mode-container" class="w-[350px] h-[435.1px] border border-black">
-    <h2> focus mode </h2>
-    <button type ="button" style="background-color: #D9D9D9">5 minutes</button>
-    <button type = "button" style = "background-color: #C4C4C4">10 minutes</button>
-    <button type ="button" style = "background-color: #9D9D9D; color: white;">30 minutes</button>
-    <button type = "button" style = "background-color: #747474; color: white;">60 minutes</button>
-    <div class="w-[228.5px] p-1 border-2 border-black rounded-full flex mx-auto items-center">
-      <input id="custom-hours" type="number" min = "1" max = "24" class="border-b-2 ml-4 border-black  w-6">
-      <label for="custom-hours">hours</label>
-    </div>
-    <div class="flex items-center mx-auto space-x-2 w-64 mt-5">
-      <span class="text-black">reason:</span>
-      <input type="text" id="focus-reason" class=" text-black border-black border-2"></input>
-    </div>
-    <button id = "start-timer" type = "button" style = "color: black;">start timer!</button>
+  <div id="main-container" class="flex flex-col items-center">
+    <h1 id="study-session-title">study session</h1>
+    <p id="dynamicParagraph" style="display: none;">example text</p>
+    <div id="container-wrapper" class="flex justify-between mt-4">
+      <div id="focus-mode-container" class="w-[350px] h-[435.1px] border border-black">
+        <h2>focus mode</h2>
+        <button type="button" style="background-color: #D9D9D9">5 minutes</button>
+        <button type="button" style="background-color: #C4C4C4">10 minutes</button>
+        <button type="button" style="background-color: #9D9D9D; color: white;">30 minutes</button>
+        <button type="button" style="background-color: #747474; color: white;">60 minutes</button>
+        <div class="w-[228.5px] p-1 border-2 border-black rounded-full flex mx-auto items-center">
+          <input id="custom-hours" type="number" min="1" max="24" class="border-b-2 ml-4 border-black w-6">
+          <label for="custom-hours">hours</label>
+        </div>
+        <div class="flex items-center mx-auto space-x-2 w-64 mt-5">
+          <span class="text-black">reason:</span>
+          <input type="text" id="focus-reason" class="text-black border-black border-2">
+        </div>
+        <button id="start-timer" type="button" style="color: black;">start timer!</button>
       </div>
-  <div id="study-todo-container" class="w-[350px] h-[435.1px] border border-black flex"></div>
-  <div id="reviewer-container" class="w-[350px] h-[435.1px] border border-black flex"></div>
-  </div>
+      <div id="study-todo-container" class="w-[350px] h-[435.1px] border border-black flex flex-col items-center">
+        <h2>todo-list</h2>
+      </div>
+      <div id="reviewer-container" class="w-[350px] h-[435.1px] border border-black flex flex-col items-center">
+        <h2>exam reviewer</h2>
+      </div>
+    </div>
   </div>
 </section>
+
 <!-- <button id="checkInButton" class="btn">check-in</button> -->
 
 <h2 id="todoTitle" style="display: none;">To-Do List</h2>
