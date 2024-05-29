@@ -382,8 +382,7 @@ body {
     }
 
     #focus-mode-container {
-        margin-top: 5.25rem;
-        @apply rounded-[22px] border-[4px] ml-16
+        @apply rounded-[22px] border-[4px]
     }
     
     #focus-mode-container h2 {
@@ -421,16 +420,17 @@ body {
     }
 
     #study-todo-container {
-        margin-top: 5.25rem;
-        @apply rounded-[22px] border-[4px] ml-16 
+        @apply rounded-[22px] border-[4px]  
     }
 
     #reviewer-container {
-        margin-top: 5.25rem;
-        @apply rounded-[22px] border-[4px] ml-16 
+        @apply rounded-[22px] border-[4px] 
     }
 
     #main-container {
         @apply flex flex-col;
+    }
+
+    #container-wrapped {
     }
 }
