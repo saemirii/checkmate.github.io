@@ -450,4 +450,20 @@ body {
     #container-wrapper > div:last-child {
         margin-right: 0; 
     }
+
+    #reviewer-container h3 {
+        @apply text-black text-[17.9px] -mt-6 tracking-[0.075rem];
+        font-family: "Arial", sans-serif;
+        text-align: center;
+    }
+
+    #reviewer-input {
+        @apply border-[2.5px] border-black mt-2 rounded-[8px]
+    }
+
+    #reviewer-container button {
+        font-family: "Kollektif", sans-serif;
+        width: 228.5px;
+        @apply block mx-auto my-4 tracking-[0.075rem] text-[20px] rounded-full bg-[#FDE8BB] text-black;
+    }
 }
