@@ -137,14 +137,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!visibleElements.includes(element)) {
                 element.classList.add("hidden")
             } else {
-                element.classList.remove('hidden'); // Use default display value
+                element.classList.remove('hidden');
             }
         });
     }
 
     studySessionButton.addEventListener('click', function() {
         console.log('Study session button clicked!');
-        // Show study session container and emoji buttons, hide other elements
         showElementsExcept([studySessionContainer, document.body, document.documentElement]);
     });
 });
