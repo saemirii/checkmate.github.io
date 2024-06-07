@@ -1,6 +1,7 @@
 import "./style.css"
 //import "./js/showLogin.js"
 import "./js/addTodo.js"
+import "./js/studySession.js"
 
 // Show the main content of the page
 document.addEventListener("keydown", function (event) {
