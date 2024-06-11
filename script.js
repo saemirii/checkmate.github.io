@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     studySessionButton.addEventListener('click', function() {
             dynamicParagraph.style.display = 'block';
             studySessionContainer.style.display = 'block';
+            // Add the 
     });
 
     function showElementsExcept(visibleElements) {
