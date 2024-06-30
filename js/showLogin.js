@@ -1,6 +1,6 @@
 const checkInBtn = document.getElementById('checkInButton')
 
-//checkInBtn.addEventListener('click', showLogin) comment out
+checkInBtn.addEventListener('click', showLogin)
 
 function showLogin() {
   const homeMenu = document.getElementById("homeMenu");
@@ -8,7 +8,7 @@ function showLogin() {
   const checkInButton = document.getElementById("checkInButton");
 
   homeMenu.classList.add("fade-out");
-  checkInButton.style.display = "none";
+  // checkInButton.style.display = "none";
   setTimeout(function () {
     homeMenu.style.display = "none";
     loginContainer.style.display = "block";

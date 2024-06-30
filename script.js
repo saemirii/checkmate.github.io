@@ -2,6 +2,8 @@ import "./style.css"
 //import "./js/showLogin.js"
 import "./js/addTodo.js"
 import "./js/studySession.js"
+import "./js/showLogin.js"
+import "./js/reminders.js"
 
 // Show the main content of the page
 document.addEventListener("keydown", function (event) {
@@ -66,13 +68,15 @@ document.getElementById("markNotStarted").addEventListener("click", function () 
     }
 });
 
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Shift') {
-        const reminderContainer = document.getElementById('reminder-container');
-        // reminderContainer.classList.toggle('hidden');
-        reminderContainer.classList.toggle('visible')
-    }
-});
+// Old way of showing reminders panel - please delete if no longer needed
+// document.addEventListener('keydown', function(event) {
+//     if (event.key === 'Shift') {
+//         const reminderContainer = document.getElementById('reminder-container');
+//         // reminderContainer.classList.toggle('hidden');
+//         reminderContainer.classList.toggle('visible')
+//     }
+// });
+
 
 document.querySelectorAll('.calendar-emoji').forEach(button => {
     button.addEventListener('click', function() {
