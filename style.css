@@ -179,10 +179,10 @@ body {
     @apply ml-auto py-1 px-4 rounded-full bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-700 dark:hover:bg-neutral-600;
   }
 
-  #checkInButton {
-    font-family: "Roboto", sans-serif;
-    @apply absolute bottom-[39%] left-1/2 transform -translate-x-1/2 tracking-[0.075rem] text-[17px] px-[20px] py-[10px] rounded;
-  }
+  /*#checkInButton {*/
+  /*  font-family: "Roboto", sans-serif;*/
+  /*  @apply absolute bottom-[39%] left-1/2 transform -translate-x-1/2 tracking-[0.075rem] text-[17px] px-[20px] py-[10px] rounded;*/
+  /*}*/
 
   #tasks li {
     @apply mb-[5px];
