@@ -1,9 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   darkMode: "selector",
-  content: ["./index.html", "./script.js", "./js/**/*.js"],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "cm-green": "#DAF0CD",
+        "cm-green-dark": "#BFE5A8",
+        "cm-yellow": "#FCE8BB",
+        "cm-yellow-dark": "#FADA91"
+      }
+    },
   },
   plugins: [],
 }

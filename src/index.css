@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Kollektif';
+    src: url('/fonts/Kollektif.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Kollektif-Italic';
+    src: url('/fonts/Kollektif-Italic.ttf') format('truetype');
+}
+
+@layer base {
+    body {
+        font-family: 'Kollektif', sans-serif;
+        @apply bg-white dark:bg-neutral-900 text-slate-800 dark:text-neutral-200;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply text-lg font-bold rounded-full p-2 ;
+    }
+    .btn-green {
+        @apply btn bg-cm-green hover:bg-cm-green-dark dark:text-black;
+    }
+    .btn-yellow {
+        @apply btn bg-cm-yellow hover:bg-cm-yellow-dark dark:text-black;
+    }
+    .main-title {
+        @apply text-center
+    }
+    .main-title h1 {
+        font-size: clamp(1rem, 15vw, 4.8rem);
+        @apply transition-opacity duration-300 ease-in opacity-50 hover:opacity-100 hover:line-through;
+    }
+    .main-title p {
+        font-family: "Roboto", sans-serif;
+        font-style: normal;
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        @apply tracking-wider;
+    }
+    .menu-container {
+        @apply absolute top-0 left-0 z-50 p-6 md:p-4;
+    }
+    .menu {
+        @apply flex flex-col p-6 md:p-4 gap-y-4 transform transition-transform duration-300
+        ease-in-out -translate-x-[150%] md:-translate-x-0;
+    }
+    .menu-visible {
+        @apply -translate-x-0 bg-white border-2 border-neutral-200 dark:bg-black
+        dark:border-neutral-700 md:border-none;
+    }
+    .menu-hidden {
+        @apply -translate-x-[150%] md:-translate-x-0 bg-transparent;
+    }
+    .menu li button, .menu li a {
+        @apply flex gap-x-2 items-center cursor-pointer transform transition-transform
+        duration-300 ease-in-out md:hover:translate-x-6;
+    }
+    .menu li svg {
+        @apply text-3xl;
+    }
+    .reminders-container {
+        @apply absolute z-40 top-0 right-0 w-8/12 md:w-4/12 border-2 border-r-0 border-neutral-300
+        dark:border-neutral-600 dark:bg-black bg-white transform transition-transform
+        rounded-tl-2xl rounded-bl-2xl duration-300 ease-in-out h-full;
+    }
+    .reminders-container section {
+        @apply px-6 py-4 border-b-2 border-neutral-300 dark:border-neutral-600;
+    }
+    .reminders-container label {
+        @apply cursor-pointer;
+    }
+    .form-container {
+        @apply border-4 border-black dark:border-white p-4 rounded-lg flex flex-col gap-y-4;
+    }
+    .form-container label {
+        @apply flex text-lg flex-col gap-y-1;
+    }
+    .form-container input {
+        @apply border-2 text-inherit border-black dark:border-white p-2 rounded-md dark:bg-neutral-800;
+    }
+    .form-container button[type="submit"] {
+        @apply p-2 border-2 border-black dark:border-white rounded-md bg-neutral-700 text-white
+        text-lg dark:bg-neutral-200 dark:text-black hover:bg-neutral-900 dark:hover:bg-neutral-50;
+    }
+    .study-card {
+        @apply flex flex-col gap-y-5 border-4 border-black dark:border-white p-4 md:p-6 rounded-2xl;
+    }
+    .study-card h3 {
+        @apply text-3xl font-bold text-center;
+    }
+    .study-card label {
+        @apply py-1 px-2 rounded-md border-2 border-black dark:border-white;
+    }
+
+    .focus-mode-minutes {
+        @apply p-1 cursor-pointer rounded-full;
+    }
+    .study-card:has(ul .focus-mode-minutes) li:nth-of-type(1) {
+        @apply bg-neutral-100 hover:bg-stone-50 dark:bg-neutral-500 dark:hover:bg-stone-400;
+    }
+    .study-card:has(ul .focus-mode-minutes) li:nth-of-type(2) {
+        @apply bg-neutral-200 hover:bg-stone-100 dark:bg-neutral-600 dark:hover:bg-stone-500;
+    }
+    .study-card:has(ul .focus-mode-minutes) li:nth-of-type(3) {
+        @apply bg-neutral-300 hover:bg-stone-200 dark:bg-neutral-700 dark:hover:bg-stone-600;
+    }
+    .study-card:has(ul .focus-mode-minutes) li:nth-of-type(4) {
+        @apply bg-neutral-400 hover:bg-stone-300 dark:bg-neutral-800 dark:hover:bg-stone-700;
+    }
+    .review-textfield {
+        @apply border-2 resize-none h-full border-black dark:border-white p-2 rounded-md dark:bg-neutral-800;
+    }
+}
