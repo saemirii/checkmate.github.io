@@ -1,4 +1,32 @@
+import {useState} from "react";
+import {BiTrash, BiCalendar} from 'react-icons/bi'
+
 function StudySession() {
+  const [todos, setTodos] = useState([]);
+  const [todoInput, setTodoInput] = useState("");
+
+  function todoFormHandler(event) {
+    event.preventDefault();
+
+    if (todoInput.trim() !== "") {
+      setTodos([...todos, todoInput]);
+      setTodoInput("");
+    }
+  }
+
+  function todoInputHandler(event) {
+    setTodoInput(event.target.value);
+  }
+
+  function deleteTodoHandler(index) {
+    setTodos(todos.filter((_, i) => i !== index));
+  }
+
+  function setDateHandler(event) {
+    event.preventDefault();
+    console.log('set date here')
+  }
+
   return (
       <div className={"container h-full flex flex-col justify-center items-center"}>
         <h1 className={"text-4xl font-bold mb-10"}>study session</h1>
@@ -17,12 +45,34 @@ function StudySession() {
             </label>
             <label>
               <span className={"opacity-50"}>reason</span>
-              <input type="text" className={"ml-4 bg-transparent outline-none"} placeholder={"study for exam"}/>
+              <input type="text" className={"ml-4"} placeholder={"study for exam"}/>
             </label>
             <button className={"btn-green"}>start timer!</button>
           </section>
-          <section className={"study-card"}>
+          <section className={"study-card study-todo-container"}>
             <h3>to-do list</h3>
+            <form onSubmit={todoFormHandler} className={"flex flex-col gap-y-2"}>
+              <div className={"relative"}>
+                <label className={"flex justify-between items-center"}>
+                  <input value={todoInput} onChange={todoInputHandler} type="text" placeholder={"enter todo here"}/>
+                  <button onClick={setDateHandler} type="button">
+                    <BiCalendar className={"text-xl"}/>
+                  </button>
+                </label>
+              {/* TODO add input to set date here */}
+              </div>
+              <button className={"btn-green"} type={"submit"}>Add</button>
+            </form>
+            <ul className={"study-todo-list"}>
+              {todos.map((todo, index) => (
+                  <li key={index}>
+                    <span>{todo}</span>
+                    <button onClick={() => deleteTodoHandler(index)}>
+                      <BiTrash className={"text-xl"}/>
+                    </button>
+                  </li>
+              ))}
+            </ul>
           </section>
           <section className={"study-card"}>
             <h3>exam reviewer</h3>

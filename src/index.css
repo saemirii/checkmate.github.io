@@ -21,7 +21,10 @@
 
 @layer components {
     .btn {
-        @apply text-lg font-bold rounded-full p-2 ;
+        @apply text-lg font-bold rounded-full p-2 transition-transform duration-200 ease-in-out transform;
+    }
+    .btn:active {
+        @apply scale-95;
     }
     .btn-green {
         @apply btn bg-cm-green hover:bg-cm-green-dark dark:text-black;
@@ -88,13 +91,32 @@
         text-lg dark:bg-neutral-200 dark:text-black hover:bg-neutral-900 dark:hover:bg-neutral-50;
     }
     .study-card {
-        @apply flex flex-col gap-y-5 border-4 border-black dark:border-white p-4 md:p-6 rounded-2xl;
+        @apply flex flex-col gap-y-8 border-4 border-black dark:border-white p-4 md:p-6 rounded-2xl;
     }
     .study-card h3 {
         @apply text-3xl font-bold text-center;
     }
     .study-card label {
-        @apply py-1 px-2 rounded-md border-2 border-black dark:border-white;
+        @apply py-3 px-4 rounded-full border-2 border-black dark:border-white;
+    }
+
+    .study-card label input[type="text"] {
+        @apply bg-transparent outline-none;
+    }
+
+    .study-todo-container {
+        @apply grid grid-rows-[auto_auto_1fr];
+    }
+
+    .study-todo-list {
+        @apply flex flex-col gap-y-2 max-h-60 overflow-y-auto;
+    }
+    .study-todo-list li {
+        @apply bg-neutral-200 dark:bg-neutral-800 py-2 px-4 flex justify-between items-center rounded-full cursor-pointer
+        transition duration-200 ease-in-out hover:bg-neutral-300 dark:hover:bg-neutral-700;
+    }
+    .study-todo-list li button svg {
+        @apply transition-colors duration-200 ease-in-out hover:text-rose-400;
     }
 
     .focus-mode-minutes {
